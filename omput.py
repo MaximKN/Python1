@@ -22,13 +22,23 @@ def OMInt(x):
 #
 def OMList(x):
     omelt = Element("OMA")
-    oms = Element("OMS")
+    oms   = Element("OMS")
     oms.attrib = {'cd': 'list1', 'name': 'list'}
     omelt.insert(1, oms)
     n = 1
     for t in x:
         n += 1
         omelt.insert(n, OMelement(t))
+    return omelt
+
+
+################################################################
+#
+# OpenMath float (OMF)
+#
+def OMFloat(x):
+    omelt = Element("OMF")
+    omelt.attrib['dec'] = str(x)
     return omelt
 
 
@@ -44,6 +54,8 @@ def OMelement(x):
         return OMInt(x)
     elif t == list:
         return OMList(x)
+    elif t == float:
+        return OMFloat(x)
 
 
 ################################################################

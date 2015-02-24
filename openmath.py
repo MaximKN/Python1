@@ -16,8 +16,8 @@ from omput import *
 
 
 def ParseOMfile(fname):
-    tree = ET.parse(fname)
-    root = tree.getroot()
+    tree  = ET.parse(fname)
+    root  = tree.getroot()
     omobj = ParseOMroot(root)
     return omobj
 
