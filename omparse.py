@@ -54,8 +54,16 @@ omdicts['logic1']['false'] = False
 # nums1     http://www.openmath.org/cd/nums1.xhtml
 omdicts['nums1'] = {}
 
-#nums1.rational
+# nums1.rational
 omdicts['nums1']['rational'] = oms_list1_list
+
+
+# complex1  https://www.openmath.org/cd/complex1.xhtml
+omdicts['complex1'] = {}
+
+# complex1.complex_cartesian
+omdicts['complex1']['complex_cartesian'] = oms_list1_list
+
 
 ################################################################
 

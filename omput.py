@@ -41,6 +41,7 @@ def OMString(x):
     omelt.text = x
     return omelt
 
+
 ################################################################
 #
 # OpenMath float (OMF)
@@ -50,6 +51,7 @@ def OMFloat(x):
     omelt.attrib['dec'] = str(x)
     return omelt
 
+
 #############################################################
 #
 # OpenMath bool (OMS)
@@ -57,6 +59,21 @@ def OMFloat(x):
 def OMBool(x):
     omelt = Element("OMS")
     omelt.attrib = {'cd': 'logic1', 'name': str(x).lower()}
+    return omelt
+
+
+############################################################
+#
+# OpenMath complex (OMS)
+#
+def OMComplex(x):
+    omelt = Element("OMA")
+    oms   = Element("OMS")
+    omstr = Element("OMSTR")
+    oms.attrib = {'cd': 'complex1', 'name': 'complex_cartesian'}
+    omstr.text = str(x)
+    omelt.insert(1, oms)
+    omelt.insert(2, omstr)
     return omelt
 
 ################################################################
@@ -77,6 +94,8 @@ def OMelement(x):
         return OMFloat(x)
     elif t == bool:
         return OMBool(x)
+    elif t == complex:
+        return OMComplex(x)
 
 ################################################################
 #

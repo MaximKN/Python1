@@ -22,6 +22,9 @@ ParseOMstring(s)
 s = '<OMOBJ> <OMSTR>This is a string</OMSTR> </OMOBJ>'
 ParseOMstring(s)
 
+s = '<OMOBJ> <OMA> <OMS cd="complex1" name="complex_cartesian"/> <OMA> <OMS cd="nums1" name="rational"/> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> </OMA> </OMA> </OMOBJ>'
+ParseOMstring(s)
+
 ParseOMfile('tst/integer.xml')
 ParseOMfile('tst/list.xml')
 ParseOMfile('tst/listnested.xml')
@@ -29,6 +32,7 @@ ParseOMfile('tst/string.xml')
 ParseOMfile('tst/float.xml')
 ParseOMfile('tst/bool.xml')
 ParseOMfile('tst/rational.xml')
+ParseOMfile('tst/complex.xml')
 
 OMstring(42)
 OMprint(42)
@@ -50,6 +54,9 @@ OMprint(False)
 
 OMstring([1, 1 / 2])
 OMprint([1, 1 / 2])
+
+OMstring(complex(2 / 3, 5 / 4))
+OMprint(complex(2 / 3, 5 / 4))
 
 # tests
 a = 42
@@ -73,3 +80,5 @@ a == ParseOMstring(OMstring(a))
 a = [1, 1 / 2]
 a == ParseOMstring(OMstring(a))
 
+a = complex(2 / 3, 5 / 4)
+a == ParseOMstring(OMstring(a))
