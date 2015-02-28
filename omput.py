@@ -32,6 +32,15 @@ def OMList(x):
     return omelt
 
 
+###############################################################
+#
+# OpenMath string (OMSTR)
+#
+def OMString(x):
+    omelt = Element("OMSTR")
+    omelt.text = x
+    return omelt
+
 ################################################################
 #
 # OpenMath float (OMF)
@@ -62,6 +71,8 @@ def OMelement(x):
         return OMInt(x)
     elif t == list:
         return OMList(x)
+    elif t == str:
+        return OMString(x)
     elif t == float:
         return OMFloat(x)
     elif t == bool:

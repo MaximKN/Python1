@@ -19,6 +19,11 @@ def ParseOMF(node):
     return float(node.attrib['dec'])
 
 
+# OpenMath string
+def ParseOMSTR(node):
+    return node.text
+
+
 ################################################################
 #
 # OpenMath content dictionaries
@@ -67,7 +72,7 @@ def ParseOMA(node):
     return elts[0](elts[1:len(elts)])
 
 
-ParseOMelementHandler = {'OMI': ParseOMI, 'OMF': ParseOMF, 'OMS': ParseOMS, 'OMA': ParseOMA}
+ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMF': ParseOMF, 'OMS': ParseOMS, 'OMA': ParseOMA}
 
 
 def ParseOMelement(obj):
