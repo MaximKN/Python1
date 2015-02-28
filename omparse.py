@@ -42,6 +42,9 @@ omdicts['logic1'] = {}
 # logic1.true
 omdicts['logic1']['true'] = True
 
+# logic1.false
+omdicts['logic1']['false'] = False
+
 
 ################################################################
 

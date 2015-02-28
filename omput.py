@@ -41,6 +41,14 @@ def OMFloat(x):
     omelt.attrib['dec'] = str(x)
     return omelt
 
+#############################################################
+#
+# OpenMath bool (OMS)
+#
+def OMBool(x):
+    omelt = Element("OMS")
+    omelt.attrib = {'cd': 'logic1', 'name': str(x).lower()}
+    return omelt
 
 ################################################################
 #
@@ -56,7 +64,8 @@ def OMelement(x):
         return OMList(x)
     elif t == float:
         return OMFloat(x)
-
+    elif t == bool:
+        return OMBool(x)
 
 ################################################################
 #
