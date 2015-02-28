@@ -16,11 +16,15 @@ ParseOMstring(s)
 s = '<OMOBJ> <OMS cd="logic1" name="false"/> </OMOBJ>'
 ParseOMstring(s)
 
+s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>1</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>1</OMI> <OMI>2</OMI> </OMA> </OMA> </OMOBJ>'
+ParseOMstring(s)
+
 ParseOMfile('tst/integer.xml')
 ParseOMfile('tst/list.xml')
 ParseOMfile('tst/listnested.xml')
 ParseOMfile('tst/float.xml')
 ParseOMfile('tst/bool.xml')
+ParseOMfile('tst/rational.xml')
 
 OMstring(42)
 OMprint(42)
@@ -37,6 +41,9 @@ OMprint([0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315
 OMstring(False)
 OMprint(False)
 
+OMstring([1, 1 / 2])
+OMprint([1, 1 / 2])
+
 # tests
 a = 42
 a == ParseOMstring(OMstring(a))
@@ -52,3 +59,7 @@ a == ParseOMstring(OMstring(a))
 
 a = False
 a == ParseOMstring(OMstring(a))
+
+a = [1, 1 / 2]
+a == ParseOMstring(OMstring(a))
+

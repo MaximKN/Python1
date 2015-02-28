@@ -46,6 +46,12 @@ omdicts['logic1']['true'] = True
 omdicts['logic1']['false'] = False
 
 
+# nums1     http://www.openmath.org/cd/nums1.xhtml
+omdicts['nums1'] = {}
+
+#nums1.rational
+omdicts['nums1']['rational'] = oms_list1_list
+
 ################################################################
 
 def ParseOMS(node):
