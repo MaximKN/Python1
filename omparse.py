@@ -75,7 +75,11 @@ omdicts['linalg2']['matrixrow'] = oms_list1_list
 # linalg2.matrix
 omdicts['linalg2']['matrix'] = oms_list1_list
 
+# integer1
+omdicts['integer1'] = {}
 
+# linalg2.matrix
+omdicts['integer1']['factorial'] = oms_list1_list
 
 ################################################################
 

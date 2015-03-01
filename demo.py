@@ -30,6 +30,9 @@ ParseOMstring(s)
 s = '<OMOBJ><OMA><OMS cd="linalg2" name="matrix"/><OMA><OMS cd="linalg2" name="matrixrow"/><OMI>1</OMI><OMI>2</OMI><OMI>3</OMI></OMA><OMA><OMS cd="linalg2" name="matrixrow"/><OMI>42</OMI><OMI>5</OMI><OMI>6</OMI></OMA><OMA><OMS cd="linalg2" name="matrixrow"/><OMI>0</OMI><OMI>-1</OMI><OMI>-100</OMI></OMA></OMA></OMOBJ>'
 ParseOMstring(s)
 
+s = '<OMOBJ><OMA><OMS cd="integer1" name="factorial"/><OMI>10</OMI></OMA></OMOBJ>'
+ParseOMstring(s)
+
 ParseOMfile('tst/integer.xml')
 ParseOMfile('tst/list.xml')
 ParseOMfile('tst/listnested.xml')
@@ -40,6 +43,7 @@ ParseOMfile('tst/rational.xml')
 ParseOMfile('tst/complex.xml')
 ParseOMfile('tst/interval.xml')
 ParseOMfile('tst/matrix.xml')
+ParseOMfile('tst/factorial.xml')
 
 OMstring(42)
 OMprint(42)
