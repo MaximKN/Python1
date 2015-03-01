@@ -37,9 +37,7 @@ omdicts = {'list1': {}}
 def oms_list1_list(list):
     return list
 
-
 omdicts['list1']['list'] = oms_list1_list
-
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml
 omdicts['logic1'] = {}
@@ -50,19 +48,33 @@ omdicts['logic1']['true'] = True
 # logic1.false
 omdicts['logic1']['false'] = False
 
-
 # nums1     http://www.openmath.org/cd/nums1.xhtml
 omdicts['nums1'] = {}
 
 # nums1.rational
 omdicts['nums1']['rational'] = oms_list1_list
 
-
 # complex1  https://www.openmath.org/cd/complex1.xhtml
 omdicts['complex1'] = {}
 
 # complex1.complex_cartesian
 omdicts['complex1']['complex_cartesian'] = oms_list1_list
+
+# interval1
+omdicts['interval1'] = {}
+
+# interval1
+omdicts['interval1']['integer_interval'] = oms_list1_list
+
+# linalg2
+omdicts['linalg2'] = {}
+
+# linalg2.matrixrow
+omdicts['linalg2']['matrixrow'] = oms_list1_list
+
+# linalg2.matrix
+omdicts['linalg2']['matrix'] = oms_list1_list
+
 
 
 ################################################################
@@ -91,4 +103,4 @@ def ParseOMroot(root):
     return ParseOMelement(root[0])
 
 
-    ################################################################
+################################################################
