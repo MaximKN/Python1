@@ -69,11 +69,10 @@ def OMBool(x):
 def OMComplex(x):
     omelt = Element("OMA")
     oms   = Element("OMS")
-    omstr = Element("OMSTR")
     oms.attrib = {'cd': 'complex1', 'name': 'complex_cartesian'}
-    omstr.text = str(x)
     omelt.insert(1, oms)
-    omelt.insert(2, omstr)
+    omelt.insert(2, OMelement(x.real))
+    omelt.insert(3, OMelement(x.imag))
     return omelt
 
 ################################################################
