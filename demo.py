@@ -3,40 +3,40 @@ from openmath import *
 
 def main():
     s = '<OMOBJ> <OMI>42</OMI> </OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>41</OMI> <OMI>42</OMI> <OMI>43</OMI> </OMA> </OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>41</OMI> <OMI>42</OMI> <OMI>43</OMI> <OMA> <OMS cd="list1" name="list"/> <OMI>41</OMI> <OMI>42</OMI> <OMI>43</OMI> </OMA> </OMA> </OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMF dec="0"/> <OMF dec="1."/> <OMF dec="0.5"/> <OMF dec="-1."/> <OMF dec="19487171."/> <OMF dec="5.1315811823070673e-08"/> <OMF dec="-19487171."/> <OMF dec="-5.1315811823070673e-08"/> </OMA> </OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ> <OMS cd="logic1" name="false"/> </OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>1</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>1</OMI> <OMI>2</OMI> </OMA> </OMA> </OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ> <OMSTR>This is a string</OMSTR> </OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
-    s = '<OMOBJ> <OMA> <OMS cd="complex1" name="complex_cartesian"/> <OMA> <OMS cd="nums1" name="rational"/> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> </OMA> </OMA> </OMOBJ>'
-    ParseOMstring(s)
+    s = '<OMOBJ> <OMA> <OMS cd="complex1" name="complex_cartesian"/> <OMA> <OMS cd="nums1" name="rational"/> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI></OMA> </OMA> </OMA> </OMOBJ>'
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ><OMA><OMS cd="linalg2" name="matrix"/><OMA><OMS cd="linalg2" name="matrixrow"/><OMI>1</OMI><OMI>2</OMI><OMI>3</OMI></OMA><OMA><OMS cd="linalg2" name="matrixrow"/><OMI>42</OMI><OMI>5</OMI><OMI>6</OMI></OMA><OMA><OMS cd="linalg2" name="matrixrow"/><OMI>0</OMI><OMI>-1</OMI><OMI>-100</OMI></OMA></OMA></OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ><OMA><OMS cd="integer1" name="factorial"/><OMI>10</OMI></OMA></OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     s = '<OMOBJ><OMV name="x"/></OMOBJ>'
-    ParseOMstring(s)
+    print ">>", ParseOMstring(s)
 
     ParseOMfile('tst/integer.xml')
     ParseOMfile('tst/list.xml')
@@ -71,8 +71,8 @@ def main():
     OMstring([1, 1 / 2])
     OMprint([1, 1 / 2])
 
-    OMstring(complex(2 / 3, 5 / 4))
-    OMprint(complex(2 / 3, 5 / 4))
+    OMstring(complex(2, 5))
+    OMprint(complex(2, 5))
 
     # tests
     a = 42
@@ -96,7 +96,7 @@ def main():
     a = [1, 1 / 2]
     a == ParseOMstring(OMstring(a))
 
-    a = complex(2 / 3, 5 / 4)
+    a = complex(2 / 3, 5 / 6)
     a == ParseOMstring(OMstring(a))
 
 
