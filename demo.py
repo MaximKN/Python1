@@ -1,4 +1,5 @@
 from openmath import *
+import xml.dom.minidom
 
 
 def main():
@@ -20,7 +21,7 @@ def main():
     s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>1</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>1</OMI> <OMI>2</OMI> </OMA> </OMA> </OMOBJ>'
     ParseOMstring(s)
 
-    s = '<OMOBJ> <OMSTR>This is a string</OMSTR> </OMOBJ>'
+    s = '<OMOBJ> <OMSTR>hello world</OMSTR> </OMOBJ>'
     ParseOMstring(s)
 
     s = '<OMOBJ> <OMA> <OMS cd="complex1" name="complex_cartesian"/> <OMA> <OMS cd="nums1" name="rational"/> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> </OMA> </OMA> </OMOBJ>'
@@ -53,14 +54,15 @@ def main():
     OMstring(42)
     OMprint(42)
 
+
     OMstring([1, 2, 3])
     OMprint([1, 2, 3])
 
     OMstring([1, 2, [3, 4, 5]])
     OMprint([1, 2, [3, 4, 5]])
 
-    OMstring("This is a string")
-    OMprint("This is a string")
+    OMstring("hello world")
+    OMprint("hello world")
 
     OMstring([0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315811823070673e-08])
     OMprint([0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315811823070673e-08])
@@ -84,7 +86,7 @@ def main():
     a = [1, 2, [3, 4, 5]]
     a == ParseOMstring(OMstring(a))
 
-    a = "This is a string"
+    a = "hello world"
     a == ParseOMstring(OMstring(a))
 
     a = [0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315811823070673e-08]

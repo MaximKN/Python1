@@ -2,6 +2,7 @@
 # See https://docs.python.org/2/library/xml.etree.elementtree.html#
 
 import xml.etree.ElementTree as ET
+import xml.dom.minidom
 
 Element = ET.Element
 SubElement = ET.SubElement
@@ -35,6 +36,6 @@ def OMstring(x):
 
 
 def OMprint(x):
-    ET.dump(OMobject(x))
+    print xml.dom.minidom.parseString(OMstring(x)).toprettyxml()
 
 ################################################################
