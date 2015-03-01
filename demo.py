@@ -21,13 +21,8 @@ def main():
     s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>1</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>1</OMI> <OMI>2</OMI> </OMA> </OMA> </OMOBJ>'
     print ">>", ParseOMstring(s)
 
-<<<<<<< HEAD
-    s = '<OMOBJ> <OMSTR>hello world</OMSTR> </OMOBJ>'
-    ParseOMstring(s)
-=======
     s = '<OMOBJ> <OMSTR>This is a string</OMSTR> </OMOBJ>'
     print ">>", ParseOMstring(s)
->>>>>>> 9f7a1bc1da9eacf1f38ea40f4415c148f78beb55
 
     s = '<OMOBJ> <OMA> <OMS cd="complex1" name="complex_cartesian"/> <OMA> <OMS cd="nums1" name="rational"/> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI></OMA> </OMA> </OMA> </OMOBJ>'
     print ">>", ParseOMstring(s)
