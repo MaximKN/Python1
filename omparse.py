@@ -24,6 +24,8 @@ def ParseOMSTR(node):
     return node.text
 
 
+def ParseOMV(node):
+    return node.attrib['name']
 ################################################################
 #
 # OpenMath content dictionaries
@@ -96,7 +98,8 @@ def ParseOMA(node):
     return elts[0](elts[1:len(elts)])
 
 
-ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMF': ParseOMF, 'OMS': ParseOMS, 'OMA': ParseOMA}
+ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV, 'OMF': ParseOMF, 'OMS': ParseOMS,
+                         'OMA': ParseOMA}
 
 
 def ParseOMelement(obj):
