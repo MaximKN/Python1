@@ -1,4 +1,5 @@
 from openmath import *
+from fractions import Fraction
 
 s = '<OMOBJ> <OMI>42</OMI> </OMOBJ>'
 print ">>", ParseOMstring(s)
@@ -21,7 +22,7 @@ print ">>", ParseOMstring(s)
 s = '<OMOBJ> <OMSTR>This is a string</OMSTR> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
-s = '<OMOBJ> <OMA> <OMS cd="complex1" name="complex_cartesian"/> <OMA> <OMS cd="nums1" name="rational"/> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI></OMA> </OMA> </OMA> </OMOBJ>'
+s = '<OMOBJ><OMA><OMS cd="complex1" name="complex_cartesian"/><OMA><OMS cd="nums1" name="rational"/><OMI>2</OMI><OMI>3</OMI></OMA><OMA><OMS cd="nums1" name="rational"/><OMI>5</OMI><OMI>4</OMI></OMA></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
 
 s = '<OMOBJ> <OMA> <OMS cd="interval1" name="integer_interval"/> <OMI>1</OMI> <OMI>10</OMI> </OMA> </OMOBJ>'
@@ -66,33 +67,54 @@ OMprint([0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315
 OMstring(False)
 OMprint(False)
 
-OMstring([1, 1 / 2])
-OMprint([1, 1 / 2])
+OMstring([1, Fraction(1, 2)])
+OMprint([1, Fraction(1, 2)])
 
 OMstring(complex(2, 5))
 OMprint(complex(2, 5))
 
+################# ERROR CHECKING #####################
+
+#s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMV name="x"/></OMA> </OMOBJ>' 
+#print "error-check >>>", ParseOMstring(s)
+
+#s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> </OMA> </OMOBJ>'
+#print "error-check >>>", ParseOMstring(s)
+
+#s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMV name="x"/> <OMV name="y"/> </OMA> </OMOBJ>'
+#print "error-check >>>", ParseOMstring(s) 
+
+######################################################
+
 # tests
 a = 42
-a == ParseOMstring(OMstring(a))
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b
 
 a = [1, 2, 3]
-a == ParseOMstring(OMstring(a))
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b
 
 a = [1, 2, [3, 4, 5]]
-a == ParseOMstring(OMstring(a))
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b
 
 a = "This is a string"
-a == ParseOMstring(OMstring(a))
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b
 
 a = [0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315811823070673e-08]
-a == ParseOMstring(OMstring(a))
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b
 
 a = False
-a == ParseOMstring(OMstring(a))
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b
 
-a = [1, 1 / 2]
-a == ParseOMstring(OMstring(a))
+a = [1, Fraction(1, 2)]
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b
 
-a = complex(2 / 3, 5 / 6)
-a == ParseOMstring(OMstring(a))
+a = complex(Fraction(1, 2), 5)
+b = ParseOMstring(OMstring(a))
+print a, ":", b, " == ", a == b

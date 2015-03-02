@@ -2,6 +2,7 @@
 # See https://docs.python.org/2/library/xml.etree.elementtree.html#
 
 import xml.etree.ElementTree as ET
+from fractions import Fraction
 
 Element = ET.Element
 SubElement = ET.SubElement
@@ -62,6 +63,19 @@ def OMBool(x):
     return omelt
 
 
+#############################################################
+#
+# OpenMath rational (OMS)
+#
+def OMRational(x):
+    omelt = Element("OMA")
+    oms   = Element("OMS")
+    oms.attrib = {'cd': 'nums1', 'name': 'rational'}
+    omelt.insert(1, oms)
+    omelt.insert(2, OMelement(x.denominator))
+    omelt.insert(3, OMelement(x.numerator))
+    return omelt
+
 ############################################################
 #
 # OpenMath complex (OMS)
@@ -95,6 +109,8 @@ def OMelement(x):
         return OMBool(x)
     elif t == complex:
         return OMComplex(x)
+    elif t == Fraction:
+        return OMRational(x)
 
 ################################################################
 #
