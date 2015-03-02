@@ -77,7 +77,8 @@ omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 # interval1 http://www.openmath.org/cd/interval1.xhtml
 # interval1.integer_interval
 def oms_interval1_interval(obj):
-    # TODO
+    # TODO maybe return a list of 1 to n
+    # check that n is a positive integer
     return obj
 
 omdicts['interval1']['integer_interval'] = oms_interval1_interval
@@ -86,15 +87,15 @@ omdicts['interval1']['integer_interval'] = oms_interval1_interval
 # linalg2   http://www.openmath.org/cd/linalg2.xhtml
 # linalg2.matrixrow
 def oms_linalg2_matrixrow(obj):
-    #TODO
+    #TODO check if all cells need to be of the same type
     return obj
 
 omdicts['linalg2']['matrixrow'] = oms_linalg2_matrixrow
 
 # linalg2.matrix
 def oms_linalg2_matrix(obj):
-    # call matrixrow functon on obj
-    #TODO
+    # call matrixrow functoin on obj rows (maybe)
+    #TODO do checks. make sure rows are of the same length as cols
     return obj
 
 omdicts['linalg2']['matrix'] = oms_linalg2_matrix
