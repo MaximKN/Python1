@@ -59,6 +59,7 @@ def oms_nums1_rational(obj):
     assert t == type(obj[1]) and t is int, "Rational only accepts integer values."
     assert obj[1] != 0, "Denominator of rational needs to be non-integer"
     return obj
+    # TODO consider how its getting outputted to the screen
 
 omdicts['nums1']['rational'] = oms_nums1_rational
 
@@ -66,6 +67,8 @@ omdicts['nums1']['rational'] = oms_nums1_rational
 # complex1  http://www.openmath.org/cd/complex1.xhtml
 # complex1.complex_cartesian
 def oms_complex1_cartesian(obj):
+    # TODO FORMAT OUTPUT TO NORMAL CARTESIAN
+    # MAYBE COMPOSE ELEMENTS INTO CARTESIAN TYPE AGAIN
     return obj
 
 omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
@@ -74,6 +77,7 @@ omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 # interval1 http://www.openmath.org/cd/interval1.xhtml
 # interval1.integer_interval
 def oms_interval1_interval(obj):
+    # TODO
     return obj
 
 omdicts['interval1']['integer_interval'] = oms_interval1_interval
@@ -82,6 +86,7 @@ omdicts['interval1']['integer_interval'] = oms_interval1_interval
 # linalg2   http://www.openmath.org/cd/linalg2.xhtml
 # linalg2.matrixrow
 def oms_linalg2_matrixrow(obj):
+    #TODO
     return obj
 
 omdicts['linalg2']['matrixrow'] = oms_linalg2_matrixrow
@@ -89,6 +94,7 @@ omdicts['linalg2']['matrixrow'] = oms_linalg2_matrixrow
 # linalg2.matrix
 def oms_linalg2_matrix(obj):
     # call matrixrow functon on obj
+    #TODO
     return obj
 
 omdicts['linalg2']['matrix'] = oms_linalg2_matrix
@@ -101,6 +107,7 @@ def oms_integer1_factorial(obj):
     assert type(obj[0]) is int, "Can't compute factorial of a non-integer."
     assert obj[0] >= 0, "Can't compute factorial of negative integer."
     return obj
+    #TODO maybe output answer to factorial or n!
 
 omdicts['integer1']['factorial'] = oms_integer1_factorial
 
