@@ -51,10 +51,17 @@ omdicts['logic1']['true'] = True
 omdicts['logic1']['false'] = False
 
 # nums1     http://www.openmath.org/cd/nums1.xhtml
+
+def oms_nums1_rational(obj):
+    pass
+    # make sure it gets the actual children
+    # check children if integer
+    # make sure there are only two
+
 omdicts['nums1'] = {}
 
 # nums1.rational
-omdicts['nums1']['rational'] = oms_list1_list
+omdicts['nums1']['rational'] = oms_nums1_rational
 
 # complex1  https://www.openmath.org/cd/complex1.xhtml
 omdicts['complex1'] = {}
