@@ -26,6 +26,7 @@ def ParseOMF(node):
 def ParseOMSTR(node):
     return node.text
 
+
 # OpenMath variable
 def ParseOMV(node):
     return node.attrib['name']
@@ -43,47 +44,70 @@ omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
 def oms_list1_list(list):
     return list
 
+
 omdicts['list1']['list'] = oms_list1_list
 
 
 def oms_arith1_plus(obj):
     return reduce(lambda x, y: x + y, obj)
 
+
 def oms_arith1_minus(obj):
     return reduce(lambda x, y: x - y, obj)
+
 
 def oms_arith1_times(obj):
     return reduce(lambda x, y: x * y, obj)
 
+
 def oms_arith1_divide(obj):
     return reduce(lambda x, y: x / y, obj)
+
 
 def oms_arith1_pow(obj):
     return reduce(lambda x, y: x ** y, obj)
 
 
 def oms_arith1_sum(obj):
-    return reduce(lambda x, y: x + y, obj[0])
+    try:
+        return reduce(lambda x, y: x + y, obj[0])
+    except ValueError:
+        return "Error: less than one interval in SUM"
 
 
 def oms_arith1_product(obj):
-    return reduce(lambda x, y: x * y, obj[0])
+    try:
+        return reduce(lambda x, y: x * y, obj[0])
+    except ValueError:
+        return "Error: less than one interval in PRODUCT"
 
 
 def oms_arith1_root(obj):
-    return obj[0] ** 1 / obj[1]
+    try:
+        return obj[0] ** 1 / obj[1]
+    except ValueError:
+        return "Error: less than two variables in ROOT"
 
 
 def oms_arith1_abs(obj):
-    return abs(obj[0])
+    try:
+        return abs(obj[0])
+    except ValueError:
+        return "Error: less than one variable in ABS"
 
 
 def oms_arith1_gcd(obj):
-    return gcd(obj[0], obj[1])
+    try:
+        return gcd(obj[0], obj[1])
+    except ValueError:
+        return "Error: less than one variable in GCD"
 
 
 def oms_arith1_lcm(obj):
-    return gcd(obj[0], obj[1])
+    try:
+        return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
+    except ValueError:
+        return "Error: less than one variable in LCM"
 
 # arith1
 omdicts['arith1']['plus'] = oms_arith1_plus
@@ -116,6 +140,7 @@ def oms_nums1_rational(obj):
     assert obj[1] != 0, "Denominator of rational needs to be non-integer"
     return Fraction(obj[0], obj[1])
 
+
 omdicts['nums1']['rational'] = oms_nums1_rational
 
 
@@ -126,6 +151,7 @@ def oms_complex1_cartesian(obj):
     real = obj[0]
     imag = obj[1]
     return complex(real, imag)
+
 
 omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 
@@ -139,22 +165,25 @@ def oms_interval1_interval(obj):
     obj = list(range(obj[0], obj[1] + 1))
     return obj
 
+
 omdicts['interval1']['integer_interval'] = oms_interval1_interval
 
 
 # linalg2   http://www.openmath.org/cd/linalg2.xhtml
 # linalg2.matrixrow
 def oms_linalg2_matrixrow(obj):
-    #TODO check if all cells need to be of the same type
+    # TODO check if all cells need to be of the same type
     return obj
+
 
 omdicts['linalg2']['matrixrow'] = oms_linalg2_matrixrow
 
 # linalg2.matrix
 def oms_linalg2_matrix(obj):
     # call matrixrow functoin on obj rows (maybe)
-    #TODO do checks. make sure rows are of the same length as cols
+    # TODO do checks. make sure rows are of the same length as cols
     return obj
+
 
 omdicts['linalg2']['matrix'] = oms_linalg2_matrix
 
@@ -162,18 +191,21 @@ omdicts['linalg2']['matrix'] = oms_linalg2_matrix
 # integer1  http://www.openmath.org/cd/integer2.xhtml
 # integer1.factorial
 def oms_integer1_factorial(obj):
-    assert len(obj) == 1, "Factorial only supports one element." 
+    assert len(obj) == 1, "Factorial only supports one element."
     assert type(obj[0]) is int, "Can't compute factorial of a non-integer."
     assert obj[0] >= 0, "Can't compute factorial of negative integer."
     return factorial(obj[0])
 
+
 omdicts['integer1']['factorial'] = oms_integer1_factorial
+
 
 def oms_dictionary_keyval(obj):
     return obj
 
 # dictionary.keyval
 omdicts['dictionary']['keyval'] = oms_dictionary_keyval
+
 
 def oms_dictionary_dict(obj):
     return obj
