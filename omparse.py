@@ -33,7 +33,7 @@ def ParseOMV(node):
 # OpenMath content dictionaries
 #
 omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
-           'interval1': {}, 'linalg2': {}, 'integer1': {}}
+           'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {}}
 
 # list1    http://www.openmath.org/cd/list1.xhtml
 # list1.list
@@ -41,6 +41,32 @@ def oms_list1_list(list):
     return list
 
 omdicts['list1']['list'] = oms_list1_list
+
+
+def oms_arith1_plus(obj):
+    obj = sum(obj)
+    return obj
+
+
+def oms_arith1_minus(obj):
+    obj = reduce(lambda x, y: x - y, obj)
+    return obj
+
+
+def oms_arith1_times(obj):
+    obj = reduce(lambda x, y: x * y, obj)
+    return obj
+
+
+def oms_arith1_divide(obj):
+    obj = reduce(lambda x, y: x / y, obj)
+    return obj
+
+# arith1.plus
+omdicts['arith1']['plus'] = oms_arith1_plus
+omdicts['arith1']['minus'] = oms_arith1_minus
+omdicts['arith1']['times'] = oms_arith1_times
+omdicts['arith1']['divide'] = oms_arith1_divide
 
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml

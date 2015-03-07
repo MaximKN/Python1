@@ -7,10 +7,7 @@ import xml.dom.minidom
 Element = ET.Element
 SubElement = ET.SubElement
 
-import omparse
 from omparse import *
-
-import omput
 from omput import *
 
 ################################################################
