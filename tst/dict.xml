@@ -1,0 +1,23 @@
+<OMOBJ>
+	<OMA>
+		<OMS cd="dictionary" name="dict"/>
+		<OMA>
+			<OMS cd="dictionary" name="keyval"/>
+			<OMSTR>a</OMSTR>
+			<!--omi can be anything we support-->
+			<OMI>10</OMI>
+		</OMA>
+		<OMA>
+			<OMS cd="dictionary" name="keyval"/>
+			<OMSTR>b</OMSTR>
+			<!--omi can be anything we support-->
+			<OMI>20</OMI>
+		</OMA>
+		<OMA>
+			<OMS cd="dictionary" name="keyval"/>
+			<OMI>2</OMI>
+			<!--omi can be anything we support-->
+			<OMSTR>blue</OMSTR>
+		</OMA>
+	</OMA>
+</OMOBJ>

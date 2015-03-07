@@ -36,7 +36,7 @@ def ParseOMV(node):
 # OpenMath content dictionaries
 #
 omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
-           'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {}}
+           'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {}, 'dictionary': {}}
 
 # list1    http://www.openmath.org/cd/list1.xhtml
 # list1.list
@@ -101,7 +101,7 @@ omdicts['arith1']['lcm'] = oms_arith1_lcm
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml
 # logic1.true
-omdicts['logic1']['true']  = True
+omdicts['logic1']['true'] = True
 
 # logic1.false
 omdicts['logic1']['false'] = False
@@ -168,6 +168,18 @@ def oms_integer1_factorial(obj):
     return factorial(obj[0])
 
 omdicts['integer1']['factorial'] = oms_integer1_factorial
+
+def oms_dictionary_keyval(obj):
+    return obj
+
+# dictionary.keyval
+omdicts['dictionary']['keyval'] = oms_dictionary_keyval
+
+def oms_dictionary_dict(obj):
+    return obj
+
+# dictionary.dict
+omdicts['dictionary']['dict'] = oms_dictionary_dict
 
 ################################################################
 

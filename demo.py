@@ -75,6 +75,10 @@ print ">>", ParseOMstring(s)
 s = '<OMOBJ> <OMV name="x"/> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# dictionary
+s = '<OMOBJ><OMA><OMS cd="dictionary" name="dict"/><OMA><OMS cd="dictionary" name="keyval"/><OMSTR>a</OMSTR><OMI>10</OMI></OMA><OMA><OMS cd="dictionary" name="keyval"/><OMSTR>b</OMSTR><OMI>20</OMI></OMA><OMA><OMS cd="dictionary" name="keyval"/><OMI>2</OMI><OMSTR>blue</OMSTR></OMA></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
+
 ParseOMfile('tst/integer.xml')
 ParseOMfile('tst/list.xml')
 ParseOMfile('tst/listnested.xml')
@@ -86,6 +90,8 @@ ParseOMfile('tst/complex.xml')
 ParseOMfile('tst/interval.xml')
 ParseOMfile('tst/matrix.xml')
 ParseOMfile('tst/factorial.xml')
+ParseOMfile('tst/dict.xml')
+
 
 OMstring(42)
 OMprint(42)
@@ -110,6 +116,10 @@ OMprint([1, Fraction(1, 2)])
 
 OMstring(complex(2, 5))
 OMprint(complex(2, 5))
+
+OMstring([['yellow', 2], ['blue', 3], [2, 'blue']])
+OMprint([['yellow', 2], ['blue', 3], [2, 'blue']])
+
 
 ################# ERROR CHECKING #####################
 
@@ -156,3 +166,7 @@ print a, ":", b, " == ", a == b
 a = complex(Fraction(1, 2), 5)
 b = ParseOMstring(OMstring(a))
 print a, ":", b, " == ", a == b
+
+a = [['yellow', 2], ['blue', 3], [2, 'blue']]
+b = ParseOMstring(OMstring(a))
+print a, ":", b, "==", a == b
