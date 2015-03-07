@@ -17,9 +17,30 @@ print ">>>", ParseOMstring(s)
 
 s = '<OMOBJ><OMA><OMS cd="arith1" name="pow"/><OMI>2</OMI> <OMI>3</OMI></OMA></OMOBJ>'
 print ">>>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="sum"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
+print ">>>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="product"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
+print ">>>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="root"/><OMI>4</OMI><OMI>2</OMI></OMA></OMOBJ>'
+print ">>>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="abs"/><OMI>-4</OMI></OMA></OMOBJ>'
+print ">>>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="gcd"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
+print ">>>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="lcm"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
+print ">>>", ParseOMstring(s)
+
+
+
 print "Rest of it"
 
-s = '<OMOBJ> <OMI>42</OMI> </OMOBJ>'
+s = '<OMOBJ> <OMI>42</OMI></OMOBJ>'
 print ">>", ParseOMstring(s)
 
 s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>41</OMI> <OMI>42</OMI> <OMI>43</OMI> </OMA> </OMOBJ>'
