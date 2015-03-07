@@ -68,14 +68,19 @@ def OMBool(x):
 # OpenMath rational (OMS)
 #
 def OMRational(x):
-    omelt = Element("OMA")
-    oms   = Element("OMS")
-    oms.attrib = {'cd': 'nums1', 'name': 'rational'}
-    omelt.insert(1, oms)
-    omelt.insert(2, OMelement(x.denominator))
-    omelt.insert(3, OMelement(x.numerator))
-    return omelt
-
+    if (x.denominator != 0): 
+        omelt = Element("OMA")
+        oms   = Element("OMS")
+        oms.attrib = {'cd': 'nums1', 'name': 'rational'}
+        omelt.insert(1, oms)
+        omelt.insert(2, OMelement(x.numerator))
+        omelt.insert(3, OMelement(x.denominator))
+        return omelt
+    else: # TODO open math error ome 3.1.2
+        ome = Element("OME");
+        oms = Element("OMS");
+        oma = Element("OMA");
+        oms.attrib = {'cd': 'aritherror', 'name': 'divide'}
 ############################################################
 #
 # OpenMath complex (OMS)

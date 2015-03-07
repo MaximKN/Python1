@@ -1,4 +1,4 @@
-from fractions import Fraction
+from fractions import *
 from math import *
 
 ################################################################
@@ -47,37 +47,57 @@ omdicts['list1']['list'] = oms_list1_list
 
 
 def oms_arith1_plus(obj):
-    obj = sum(obj)
-    return obj
-
+    return reduce(lambda x, y: x + y, obj)
 
 def oms_arith1_minus(obj):
-    obj = reduce(lambda x, y: x - y, obj)
-    return obj
-
+    return reduce(lambda x, y: x - y, obj)
 
 def oms_arith1_times(obj):
-    obj = reduce(lambda x, y: x * y, obj)
-    return obj
-
+    return reduce(lambda x, y: x * y, obj)
 
 def oms_arith1_divide(obj):
-    obj = reduce(lambda x, y: x / y, obj)
-    return obj
-
+    return reduce(lambda x, y: x / y, obj)
 
 def oms_arith1_pow(obj):
-    obj = reduce(lambda x, y: x ** y, obj)
-    return obj
+    return reduce(lambda x, y: x ** y, obj)
 
 
-# arith1.plus
+def oms_arith1_sum(obj):
+    return reduce(lambda x, y: x + y, obj[0])
+
+
+def oms_arith1_product(obj):
+    return reduce(lambda x, y: x * y, obj[0])
+
+
+def oms_arith1_root(obj):
+    return obj[0] ** 1 / obj[1]
+
+
+def oms_arith1_abs(obj):
+    return abs(obj[0])
+
+
+def oms_arith1_gcd(obj):
+    return gcd(obj[0], obj[1])
+
+
+def oms_arith1_lcm(obj):
+    return gcd(obj[0], obj[1])
+
+# arith1
 omdicts['arith1']['plus'] = oms_arith1_plus
 omdicts['arith1']['minus'] = oms_arith1_minus
 omdicts['arith1']['times'] = oms_arith1_times
 omdicts['arith1']['divide'] = oms_arith1_divide
 omdicts['arith1']['pow'] = oms_arith1_pow
 
+omdicts['arith1']['sum'] = oms_arith1_sum
+omdicts['arith1']['product'] = oms_arith1_product
+omdicts['arith1']['root'] = oms_arith1_root
+omdicts['arith1']['abs'] = oms_arith1_abs
+omdicts['arith1']['gcd'] = oms_arith1_gcd
+omdicts['arith1']['lcm'] = oms_arith1_lcm
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml
 # logic1.true
@@ -94,7 +114,7 @@ def oms_nums1_rational(obj):
     t = type(obj[0])
     assert t == type(obj[1]) and t is int, "Rational only accepts integer values."
     assert obj[1] != 0, "Denominator of rational needs to be non-integer"
-    return Fraction(obj[1], obj[0])
+    return Fraction(obj[0], obj[1])
 
 omdicts['nums1']['rational'] = oms_nums1_rational
 
@@ -115,6 +135,8 @@ omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 def oms_interval1_interval(obj):
     # TODO maybe return a list of 1 to n
     # check that n is a positive integer
+    # check that 2 numbers
+    obj = list(range(obj[0], obj[1] + 1))
     return obj
 
 omdicts['interval1']['integer_interval'] = oms_interval1_interval
