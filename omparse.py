@@ -47,26 +47,20 @@ def oms_list1_list(list):
 
 omdicts['list1']['list'] = oms_list1_list
 
-
 def oms_arith1_plus(obj):
     return reduce(lambda x, y: x + y, obj)
-
 
 def oms_arith1_minus(obj):
     return reduce(lambda x, y: x - y, obj)
 
-
 def oms_arith1_times(obj):
     return reduce(lambda x, y: x * y, obj)
-
 
 def oms_arith1_divide(obj):
     return reduce(lambda x, y: x / y, obj)
 
-
 def oms_arith1_pow(obj):
     return reduce(lambda x, y: x ** y, obj)
-
 
 def oms_arith1_sum(obj):
     try:
@@ -74,13 +68,11 @@ def oms_arith1_sum(obj):
     except ValueError:
         return "Error: less than one interval in SUM"
 
-
 def oms_arith1_product(obj):
     try:
         return reduce(lambda x, y: x * y, obj[0])
     except ValueError:
         return "Error: less than one interval in PRODUCT"
-
 
 def oms_arith1_root(obj):
     try:
@@ -88,20 +80,17 @@ def oms_arith1_root(obj):
     except ValueError:
         return "Error: less than two variables in ROOT"
 
-
 def oms_arith1_abs(obj):
     try:
         return abs(obj[0])
     except ValueError:
         return "Error: less than one variable in ABS"
 
-
 def oms_arith1_gcd(obj):
     try:
         return gcd(obj[0], obj[1])
     except ValueError:
         return "Error: less than one variable in GCD"
-
 
 def oms_arith1_lcm(obj):
     try:

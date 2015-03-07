@@ -36,43 +36,53 @@ print ">>>", ParseOMstring(s)
 s = '<OMOBJ><OMA><OMS cd="arith1" name="lcm"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
 print ">>>", ParseOMstring(s)
 
+print "\nThe rest:"
 
-
-print "Rest of it"
-
+# integer
 s = '<OMOBJ> <OMI>42</OMI></OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# list
 s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>41</OMI> <OMI>42</OMI> <OMI>43</OMI> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# nested lists
 s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>41</OMI> <OMI>42</OMI> <OMI>43</OMI> <OMA> <OMS cd="list1" name="list"/> <OMI>41</OMI> <OMI>42</OMI> <OMI>43</OMI> </OMA> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# floats
 s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMF dec="0"/> <OMF dec="1."/> <OMF dec="0.5"/> <OMF dec="-1."/> <OMF dec="19487171."/> <OMF dec="5.1315811823070673e-08"/> <OMF dec="-19487171."/> <OMF dec="-5.1315811823070673e-08"/> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# boolean
 s = '<OMOBJ> <OMS cd="logic1" name="false"/> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# rational
 s = '<OMOBJ> <OMA> <OMS cd="list1" name="list"/> <OMI>1</OMI> <OMA> <OMS cd="nums1" name="rational"/> <OMI>1</OMI> <OMI>2</OMI> </OMA> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# string
 s = '<OMOBJ> <OMSTR>This is a string</OMSTR> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# complex cartesian
 s = '<OMOBJ><OMA><OMS cd="complex1" name="complex_cartesian"/><OMA><OMS cd="nums1" name="rational"/><OMI>2</OMI><OMI>3</OMI></OMA><OMA><OMS cd="nums1" name="rational"/><OMI>5</OMI><OMI>4</OMI></OMA></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# interval
 s = '<OMOBJ> <OMA> <OMS cd="interval1" name="integer_interval"/> <OMI>1</OMI> <OMI>10</OMI> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# matrix
 s = '<OMOBJ> <OMA> <OMS cd="linalg2" name="matrix"/> <OMA> <OMS cd="linalg2" name="matrixrow"/> <OMI>1</OMI> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="linalg2" name="matrixrow"/> <OMI>42</OMI> <OMI>5</OMI> <OMI>6</OMI> </OMA> <OMA> <OMS cd="linalg2" name="matrixrow"/> <OMI>0</OMI> <OMI>-1</OMI> <OMI>-100</OMI> </OMA> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# factorial
 s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMI>10</OMI> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+# variable
 s = '<OMOBJ> <OMV name="x"/> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
@@ -92,7 +102,6 @@ ParseOMfile('tst/interval.xml')
 ParseOMfile('tst/matrix.xml')
 ParseOMfile('tst/factorial.xml')
 ParseOMfile('tst/dict.xml')
-
 
 OMstring(42)
 OMprint(42)
@@ -121,21 +130,6 @@ OMprint(complex(2, 5))
 OMstring([['yellow', 2], ['blue', 3], [2, 'blue']])
 OMprint([['yellow', 2], ['blue', 3], [2, 'blue']])
 
-
-################# ERROR CHECKING #####################
-
-#s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMV name="x"/></OMA> </OMOBJ>' 
-#print "error-check >>>", ParseOMstring(s)
-
-#s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> </OMA> </OMOBJ>'
-#print "error-check >>>", ParseOMstring(s)
-
-#s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMV name="x"/> <OMV name="y"/> </OMA> </OMOBJ>'
-#print "error-check >>>", ParseOMstring(s) 
-
-######################################################
-
-# tests
 a = 42
 b = ParseOMstring(OMstring(a))
 print a, ":", b, " == ", a == b
