@@ -1,4 +1,5 @@
 from fractions import Fraction
+from math import *
 
 ################################################################
 #
@@ -47,7 +48,7 @@ omdicts['list1']['list'] = oms_list1_list
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml
 # logic1.true
-omdicts['logic1']['true'] = True
+omdicts['logic1']['true']  = True
 
 # logic1.false
 omdicts['logic1']['false'] = False
@@ -68,6 +69,7 @@ omdicts['nums1']['rational'] = oms_nums1_rational
 # complex1  http://www.openmath.org/cd/complex1.xhtml
 # complex1.complex_cartesian
 def oms_complex1_cartesian(obj):
+    assert len(obj) == 2, "Complex cartesian requires exactly two elements."
     real = obj[0]
     imag = obj[1]
     return complex(real, imag)
@@ -108,8 +110,7 @@ def oms_integer1_factorial(obj):
     assert len(obj) == 1, "Factorial only supports one element." 
     assert type(obj[0]) is int, "Can't compute factorial of a non-integer."
     assert obj[0] >= 0, "Can't compute factorial of negative integer."
-    return obj
-    #TODO maybe output answer to factorial or n!
+    return factorial(obj[0])
 
 omdicts['integer1']['factorial'] = oms_integer1_factorial
 
