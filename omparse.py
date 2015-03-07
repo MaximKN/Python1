@@ -94,7 +94,7 @@ def oms_nums1_rational(obj):
     t = type(obj[0])
     assert t == type(obj[1]) and t is int, "Rational only accepts integer values."
     assert obj[1] != 0, "Denominator of rational needs to be non-integer"
-    return Fraction(obj[1], obj[0])
+    return Fraction(obj[0], obj[1])
 
 omdicts['nums1']['rational'] = oms_nums1_rational
 
