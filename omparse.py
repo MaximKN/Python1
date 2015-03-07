@@ -1,3 +1,5 @@
+from fractions import Fraction
+
 ################################################################
 #
 # Parsing OpenMath objects
@@ -58,8 +60,7 @@ def oms_nums1_rational(obj):
     t = type(obj[0])
     assert t == type(obj[1]) and t is int, "Rational only accepts integer values."
     assert obj[1] != 0, "Denominator of rational needs to be non-integer"
-    return obj
-    # TODO consider how its getting outputted to the screen
+    return Fraction(obj[1], obj[0])
 
 omdicts['nums1']['rational'] = oms_nums1_rational
 
@@ -67,9 +68,9 @@ omdicts['nums1']['rational'] = oms_nums1_rational
 # complex1  http://www.openmath.org/cd/complex1.xhtml
 # complex1.complex_cartesian
 def oms_complex1_cartesian(obj):
-    # TODO FORMAT OUTPUT TO NORMAL CARTESIAN
-    # MAYBE COMPOSE ELEMENTS INTO CARTESIAN TYPE AGAIN
-    return obj
+    real = obj[0]
+    imag = obj[1]
+    return complex(real, imag)
 
 omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 
