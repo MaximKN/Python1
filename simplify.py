@@ -5,10 +5,8 @@ from openmath import *
 def simplify(inputfile, outputfile):
     with open(inputfile, "r") as f:
         data = f.read();
-    print "Before:"
-    print data
-    print "\nAfter:"
-    OMprint(ParseOMfile(inputfile));
+    with open(outputfile, "w") as f:
+        f.write(OMstring(ParseOMfile(inputfile)));
 
 def main(argv):
     inputfile  = ''
