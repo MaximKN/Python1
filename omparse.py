@@ -65,11 +65,18 @@ def oms_arith1_divide(obj):
     obj = reduce(lambda x, y: x / y, obj)
     return obj
 
+
+def oms_arith1_pow(obj):
+    obj = reduce(lambda x, y: x ** y, obj)
+    return obj
+
+
 # arith1.plus
 omdicts['arith1']['plus'] = oms_arith1_plus
 omdicts['arith1']['minus'] = oms_arith1_minus
 omdicts['arith1']['times'] = oms_arith1_times
 omdicts['arith1']['divide'] = oms_arith1_divide
+omdicts['arith1']['pow'] = oms_arith1_pow
 
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml

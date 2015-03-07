@@ -1,5 +1,3 @@
-from fractions import Fraction
-
 from openmath import *
 
 
@@ -17,6 +15,8 @@ print ">>>", ParseOMstring(s)
 s = '<OMOBJ><OMA><OMS cd="arith1" name="divide"/><OMI>42</OMI> <OMI>43</OMI></OMA></OMOBJ>'
 print ">>>", ParseOMstring(s)
 
+s = '<OMOBJ><OMA><OMS cd="arith1" name="pow"/><OMI>2</OMI> <OMI>3</OMI></OMA></OMOBJ>'
+print ">>>", ParseOMstring(s)
 print "Rest of it"
 
 s = '<OMOBJ> <OMI>42</OMI> </OMOBJ>'
