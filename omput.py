@@ -20,6 +20,7 @@ def OMInt(x):
     omelt.text = str(x)
     return omelt
 
+
 ################################################################
 #
 # OpenMath string (OMSTR)
@@ -28,6 +29,7 @@ def OMString(x):
     omelt = Element("OMSTR")
     omelt.text = x
     return omelt
+
 
 ################################################################
 #
@@ -38,6 +40,7 @@ def OMFloat(x):
     omelt.attrib['dec'] = str(x)
     return omelt
 
+
 ################################################################
 #
 # OpenMath boolean (OMS)
@@ -46,6 +49,7 @@ def OMBool(x):
     omelt = Element("OMS")
     omelt.attrib = {'cd': 'logic1', 'name': str(x).lower()}
     return omelt
+
 
 ################################################################
 #
@@ -62,26 +66,28 @@ def OMList(x):
         omelt.insert(n, OMelement(t))
     return omelt
 
+
 ################################################################
 #
 # Rational (nums1.rational)
 #
 def OMRational(x):
     omelt = Element("OMA")
-    oms   = Element("OMS")
+    oms = Element("OMS")
     oms.attrib = {'cd': 'nums1', 'name': 'rational'}
     omelt.insert(1, oms)
     omelt.insert(2, OMelement(x.numerator))
     omelt.insert(3, OMelement(x.denominator))
-        
-    if (x.denominator != 0): 
+
+    if x.denominator != 0:
         return omelt
     else:
-        ome  = Element("OME")
+        ome = Element("OME")
         oms1 = Element("OMS")
         oms1.attrib = {'cd': 'aritherror', 'name': 'DivisionByZero'}
-        ome.insert(1, oms1);
-        ome.insert(2, omelt); 
+        ome.insert(1, oms1)
+        ome.insert(2, omelt)
+
 
 ################################################################
 #
@@ -96,6 +102,11 @@ def OMComplex(x):
     omelt.insert(3, OMelement(x.imag))
     return omelt
 
+
+################################################################
+#
+# Dictionary
+#
 def OMDict(x):
     omelt = Element("OMA")
     oms = Element("OMS")
@@ -104,20 +115,24 @@ def OMDict(x):
     n = 2
 
     for key, value in x.iteritems():
-        omelt1 = Element("OMA")
-        oms1 = Element("OMS")
-        oms1.attrib = {'cd': 'dictionary', 'name': 'keyval'}
-        omelt1.insert(1, oms1)
+        omeltSub = Element("OMA")
+        omsSub = Element("OMS")
+        omsSub.attrib = {'cd': 'dictionary', 'name': 'keyval'}
+        omeltSub.insert(1, omsSub)
 
-        omelt1.insert(2, OMelement(key))
-        omelt1.insert(3, OMelement(value))
+        omeltSub.insert(2, OMelement(key))
+        omeltSub.insert(3, OMelement(value))
 
-        omelt.insert(n, omelt1)
+        omelt.insert(n, omeltSub)
         n += 1
 
     return omelt
 
 
+################################################################
+#
+# Matrix
+#
 def OMMatrix(x):
     omelt = Element("OMA")
     oms = Element("OMS")
@@ -125,18 +140,19 @@ def OMMatrix(x):
     omelt.insert(1, oms)
     n = 2
     for listOfNumbers in x.tolist():
-        omelt1 = Element("OMA")
-        oms1 = Element("OMS")
-        oms1.attrib = {'cd': 'linalg2', 'name': 'matrixrow'}
-        omelt1.insert(1, oms1)
+        omeltSub = Element("OMA")
+        omsSub = Element("OMS")
+        omsSub.attrib = {'cd': 'linalg2', 'name': 'matrixrow'}
+        omeltSub.insert(1, omsSub)
         k = 2
         for number in listOfNumbers:
-            omelt1.insert(k, OMelement(number))
+            omeltSub.insert(k, OMelement(number))
             k += 1
-        omelt.insert(n, omelt1)
+        omelt.insert(n, omeltSub)
         n += 1
 
     return omelt
+
 
 ################################################################
 #
@@ -165,6 +181,7 @@ def OMelement(x):
     elif t == matrix:
         return OMMatrix(x)
 
+
 ################################################################
 #
 # OMobject
@@ -175,4 +192,3 @@ def OMobject(x):
     omobj = Element("OMOBJ")
     omobj.insert(1, OMelement(x))
     return omobj
-    
