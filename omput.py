@@ -16,23 +16,6 @@ def OMInt(x):
     omelt.text = str(x)
     return omelt
 
-
-################################################################
-#
-# List (list1.list)
-#
-def OMList(x):
-    omelt = Element("OMA")
-    oms   = Element("OMS")
-    oms.attrib = {'cd': 'list1', 'name': 'list'}
-    omelt.insert(1, oms)
-    n = 1
-    for t in x:
-        n += 1
-        omelt.insert(n, OMelement(t))
-    return omelt
-
-
 ###############################################################
 #
 # OpenMath string (OMSTR)
@@ -52,38 +35,46 @@ def OMFloat(x):
     omelt.attrib['dec'] = str(x)
     return omelt
 
-
 #############################################################
 #
-# OpenMath bool (OMS)
+# OpenMath boolean (OMS)
 #
 def OMBool(x):
     omelt = Element("OMS")
     omelt.attrib = {'cd': 'logic1', 'name': str(x).lower()}
     return omelt
 
+################################################################
+#
+# List (list1.list)
+#
+def OMList(x):
+    omelt = Element("OMA")
+    oms   = Element("OMS")
+    oms.attrib = {'cd': 'list1', 'name': 'list'}
+    omelt.insert(1, oms)
+    n = 1
+    for t in x:
+        n += 1
+        omelt.insert(n, OMelement(t))
+    return omelt
 
 #############################################################
 #
-# OpenMath rational (OMS)
+# Rational (nums1.rational)
 #
 def OMRational(x):
-    if (x.denominator != 0): 
-        omelt = Element("OMA")
-        oms   = Element("OMS")
-        oms.attrib = {'cd': 'nums1', 'name': 'rational'}
-        omelt.insert(1, oms)
-        omelt.insert(2, OMelement(x.numerator))
-        omelt.insert(3, OMelement(x.denominator))
-        return omelt
-    else: # TODO open math error ome 3.1.2
-        ome = Element("OME");
-        oms = Element("OMS");
-        oma = Element("OMA");
-        oms.attrib = {'cd': 'aritherror', 'name': 'divide'}
+	omelt = Element("OMA")
+	oms   = Element("OMS")
+	oms.attrib = {'cd': 'nums1', 'name': 'rational'}
+	omelt.insert(1, oms)
+	omelt.insert(2, OMelement(x.numerator))
+	omelt.insert(3, OMelement(x.denominator))
+	return omelt
+
 ############################################################
 #
-# OpenMath complex (OMS)
+# Cartesian (complex1.cartesian)
 #
 def OMComplex(x):
     omelt = Element("OMA")

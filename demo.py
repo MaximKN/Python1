@@ -1,5 +1,39 @@
 from openmath import *
 
+print "Arithmetic operations:"
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="plus"/><OMI>42</OMI> <OMI>43</OMI></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="minus"/><OMI>42</OMI> <OMI>43</OMI></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="times"/><OMI>42</OMI> <OMI>43</OMI></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="divide"/><OMI>42</OMI> <OMI>43</OMI></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="pow"/><OMI>2</OMI> <OMI>3</OMI></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
+
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="sum"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
+
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="product"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="root"/><OMI>4</OMI><OMI>2</OMI></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
+
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="abs"/><OMI>-4</OMI></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
+
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="gcd"/><OMI>20</OMI><OMI>8</OMI><OMI>4</OMI></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
+
+s = '<OMOBJ><OMA><OMS cd="arith1" name="lcm"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
+print ">>", ParseOMstring(s)
 
 print "\n\tBasic arithmetic operations:\n"
 

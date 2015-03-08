@@ -1,25 +1,27 @@
+################################################################
+#
+# Parsing OpenMath objects
+#
+
 from fractions import *
 from math import *
+
 ################################################################
 #
 # Basic OpenMath elements
 #
 
-
 # OpenMath integer
 def ParseOMI(node):
     return int(node.text)
-
 
 # OpenMath float
 def ParseOMF(node):
     return float(node.attrib['dec'])
 
-
 # OpenMath string
 def ParseOMSTR(node):
     return node.text
-
 
 # OpenMath variable
 def ParseOMV(node):
@@ -31,7 +33,8 @@ def ParseOMV(node):
 # OpenMath content dictionaries
 #
 omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
-           'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {}, 'dictionary': {}}
+           'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {},
+           'dictionary': {}}
 
 
 # list1    http://www.openmath.org/cd/list1.xhtml
@@ -39,9 +42,7 @@ omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
 def oms_list1_list(list):
     return list
 
-
 omdicts['list1']['list'] = oms_list1_list
-
 
 ################################################################
 #
@@ -74,18 +75,32 @@ def oms_arith1_pow(obj):
 
 
 def oms_arith1_sum(obj):
-    assert len(obj) >= 1, "SUM requires at least one element"
+    #assert len(obj) == 2, "SUM requires two elements"
     return reduce(lambda x, y: x + y, obj[0])
+    
+def oms_arith1_product(obj):
+    #assert len(obj) == 2, "PRODUCT requires two elements"
+    return reduce(lambda x, y: x * y, obj[0])
+        
+def oms_arith1_root(obj):
+    #assert len(obj) == 2, "ROOT requires two elements"
+    return obj[0] ** 1 / obj[1]
 
+def oms_arith1_abs(obj):
+    #assert len(obj) == 2, "ABS requires two elements"
+    return abs(obj[0])
+
+def oms_arith1_gcd(obj):
+    #assert len(obj) == 2, "GCD requires two elements"
+    return gcd(obj[0], obj[1])
+   
+def oms_arith1_lcm(obj):
+    #assert len(obj) == 2, "LCM requires two elements"
+    return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
 
 def oms_arith1_product(obj):
     assert len(obj) >= 1, "PRODUCT requires at least one element"
     return reduce(lambda x, y: x * y, obj[0])
-
-
-def oms_arith1_root(obj):
-    assert len(obj) == 2, "ROOT requires two elements"
-    return obj[0] ** 1 / obj[1]
 
 
 def oms_arith1_abs(obj):
@@ -109,23 +124,17 @@ omdicts['arith1']['plus'] = oms_arith1_plus
 omdicts['arith1']['minus'] = oms_arith1_minus
 omdicts['arith1']['times'] = oms_arith1_times
 omdicts['arith1']['divide'] = oms_arith1_divide
-omdicts['arith1']['pow'] = oms_arith1_pow
-
-# Other non-trivial operations
+omdicts['arith1']['pow']    = oms_arith1_pow
 omdicts['arith1']['sum'] = oms_arith1_sum
 omdicts['arith1']['product'] = oms_arith1_product
-omdicts['arith1']['root'] = oms_arith1_root
-omdicts['arith1']['abs'] = oms_arith1_abs
-omdicts['arith1']['gcd'] = oms_arith1_gcd
-omdicts['arith1']['lcm'] = oms_arith1_lcm
+omdicts['arith1']['root']    = oms_arith1_root
+omdicts['arith1']['abs']     = oms_arith1_abs
+omdicts['arith1']['gcd']     = oms_arith1_gcd
+omdicts['arith1']['lcm']     = oms_arith1_lcm
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml
-# logic1.true
-omdicts['logic1']['true'] = True
-
-# logic1.false
+omdicts['logic1']['true']  = True
 omdicts['logic1']['false'] = False
-
 
 ################################################################
 #
@@ -154,7 +163,6 @@ def oms_complex1_cartesian(obj):
     assert t1 == int or t1 == float or t1 == Fraction
     assert t2 == int or t2 == float or t2 == Fraction
     return complex(obj[0], obj[1])
-
 
 omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 
@@ -218,7 +226,6 @@ def oms_dictionary_keyval(obj):
 # dictionary.keyval
 omdicts['dictionary']['keyval'] = oms_dictionary_keyval
 
-
 def oms_dictionary_dict(obj):
     return dict((x[0], x[1]) for x in obj)
 
@@ -237,9 +244,8 @@ def ParseOMA(node):
     elts = []
     for child in node.findall("*"):
         elts.append(ParseOMelement(child))
-    # now the first element of 'elts' is a function to be applied to the rest of the list
+    # first element of 'elts' is a function to be applied to the rest of list
     return elts[0](elts[1:])
-
 
 def ParseOMATTR(node):
     pass
