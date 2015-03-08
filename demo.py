@@ -162,58 +162,6 @@ OMprint(complex(2, 5))
 OMstring({'a': 10, 2: 'blue', 'b': 20})
 OMprint({'a': 10, 2: 'blue', 'b': 20})
 
-
-
-################# ERROR CHECKING #####################
-
-#s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMV name="x"/></OMA> </OMOBJ>' 
-#print "error-check >>>", ParseOMstring(s)
-
-#s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> </OMA> </OMOBJ>'
-#print "error-check >>>", ParseOMstring(s)
-
-#s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMV name="x"/> <OMV name="y"/> </OMA> </OMOBJ>'
-#print "error-check >>>", ParseOMstring(s) 
-
-######################################################
-
-print "\n\tTesting:\n"
-a = 42
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = [1, 2, 3]
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = [1, 2, [3, 4, 5]]
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = "This is a string"
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = [0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315811823070673e-08]
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = False
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = [1, Fraction(1, 2)]
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = complex(Fraction(1, 2), 5)
-b = ParseOMstring(OMstring(a))
-print a, ":", b, " == ", a == b
-
-a = {'a': 10, 2: 'blue', 'b': 20}
-b = ParseOMstring(OMstring(a))
-print a, ":", b, "==", a == b
-
 a = matrix([[1, 2, 3], [42, 5, 6], [0, -1, -100]])
 b = ParseOMstring(OMstring(a))
 print a, ":", b, "==", a == b
