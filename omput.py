@@ -4,8 +4,12 @@
 import xml.etree.ElementTree as ET
 from fractions import Fraction
 
+from numpy.matrixlib.defmatrix import *
+
+
 Element = ET.Element
 SubElement = ET.SubElement
+
 
 ################################################################
 #
@@ -83,6 +87,8 @@ def OMRational(x):
         oms = Element("OMS")
         oma = Element("OMA")
         oms.attrib = {'cd': 'aritherror', 'name': 'divide'}
+
+
 ############################################################
 #
 # OpenMath complex (OMS)
@@ -117,6 +123,29 @@ def OMDict(x):
         n += 1
 
     return omelt
+
+
+def OMMatrix(x):
+    omelt = Element("OMA")
+    oms = Element("OMS")
+    oms.attrib = {'cd': 'linalg2', 'name': 'matrix'}
+    omelt.insert(1, oms)
+    n = 2
+    for listOfNumbers in x.tolist():
+        omelt1 = Element("OMA")
+        oms1 = Element("OMS")
+        oms1.attrib = {'cd': 'linalg2', 'name': 'matrixrow'}
+        omelt1.insert(1, oms1)
+        k = 2
+        for number in listOfNumbers:
+            omelt1.insert(k, OMelement(number))
+            k += 1
+        omelt.insert(n, omelt1)
+        n += 1
+
+    return omelt
+
+
 ################################################################
 #
 # OMelement
@@ -141,6 +170,8 @@ def OMelement(x):
         return OMRational(x)
     elif t == dict:
         return OMDict(x)
+    elif t == matrix:
+        return OMMatrix(x)
 
 ################################################################
 #

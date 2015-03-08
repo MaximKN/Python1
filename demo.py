@@ -1,5 +1,6 @@
 from openmath import *
 
+
 '''
 Parse Arithmetic Operations XML files
 '''
@@ -210,5 +211,9 @@ b = ParseOMstring(OMstring(a))
 print a, ":", b, " == ", a == b
 
 a = {'a': 10, 2: 'blue', 'b': 20}
+b = ParseOMstring(OMstring(a))
+print a, ":", b, "==", a == b
+
+a = matrix([[1, 2, 3], [42, 5, 6], [0, -1, -100]])
 b = ParseOMstring(OMstring(a))
 print a, ":", b, "==", a == b
