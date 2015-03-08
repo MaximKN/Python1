@@ -6,6 +6,10 @@
 from fractions import *
 from math import *
 
+from numpy import matrix
+
+
+
 ################################################################
 #
 # Basic OpenMath elements
@@ -181,7 +185,7 @@ def oms_linalg2_matrix(obj):
     length = len(obj[0])
     for row in obj:
         assert len(row) == length, "Rows in matrix need to equal size"
-    return obj
+    return matrix(obj)
 
 def oms_linalg2_matrix_dict(obj):
     keys = obj[0]
