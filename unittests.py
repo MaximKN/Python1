@@ -25,7 +25,7 @@ class TestSequenceFunctions(unittest.TestCase):
         self.assertEquals(a, b)
 
     def test_float(self):
-        a = [0, 1., 0.5, -1., 19487171., 5.1315811823070673e-08, -19487171., -5.1315811823070673e-08]
+        a = [0, 1., 0.5, -1.]
         b = ParseOMstring(OMstring(a))
         self.assertEquals(a, b)
 
