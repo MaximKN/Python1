@@ -182,7 +182,6 @@ def oms_linalg2_matrixrow(obj):
     assert t == float or t == int
     return obj
 
-
 omdicts['linalg2']['matrixrow'] = oms_linalg2_matrixrow
 
 # linalg2.matrix
@@ -192,6 +191,11 @@ def oms_linalg2_matrix(obj):
     for row in obj:
         assert len(row) == length, "Rows in matrix need to equal size"
     return obj
+
+def oms_linalg2_matrix_dict(obj):
+    keys = obj[0]
+    data = [dict(zip(keys, values)) for values in obj[1:]]
+    return data
 
 omdicts['linalg2']['matrix'] = oms_linalg2_matrix
 
@@ -216,9 +220,7 @@ omdicts['dictionary']['keyval'] = oms_dictionary_keyval
 
 
 def oms_dictionary_dict(obj):
-    # print "**",obj
     return dict((x[0], x[1]) for x in obj)
-    #return obj
 
 # dictionary.dict
 omdicts['dictionary']['dict'] = oms_dictionary_dict

@@ -120,8 +120,9 @@ OMprint([1, Fraction(1, 2)])
 OMstring(complex(2, 5))
 OMprint(complex(2, 5))
 
-OMstring([['yellow', 2], ['blue', 3], [2, 'blue']])
-OMprint([['yellow', 2], ['blue', 3], [2, 'blue']])
+OMstring({'a': 10, 2: 'blue', 'b': 20})
+OMprint({'a': 10, 2: 'blue', 'b': 20})
+
 
 
 ################# ERROR CHECKING #####################
@@ -170,6 +171,6 @@ a = complex(Fraction(1, 2), 5)
 b = ParseOMstring(OMstring(a))
 print a, ":", b, " == ", a == b
 
-a = [['yellow', 2], ['blue', 3], [2, 'blue']]
+a = {'a': 10, 2: 'blue', 'b': 20}
 b = ParseOMstring(OMstring(a))
 print a, ":", b, "==", a == b
