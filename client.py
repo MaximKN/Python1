@@ -2,7 +2,9 @@
 
 # Echo client program
 import socket
-import sys, getopt
+import sys
+import getopt
+
 
 # TODO add in command line arguments for post and host
 def main(argv):
@@ -23,24 +25,25 @@ def main(argv):
             outputfile = arg
     send(inputfile, outputfile)
 
-def send(inputfile, outputfile):
-	# get contents of file
-	with open(inputfile, "r") as f:
-		data = f.read();
 
-	HOST = 'localhost'    	  # The remote host
-	PORT = 50007              # The same port as used by the server
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect((HOST, PORT))
-	print "Connected to server"
-	print "Sending data..."
-	s.sendall(data)
-	print "Data sent"
-	data = s.recv(1024)
-	s.close()
-	with open(outputfile, "w") as f:
-		f.write(data)
-	print "Outputted server response to ", outputfile
-	
+def send(inputfile, outputfile):
+    # get contents of file
+    with open(inputfile, "r") as f:
+        data = f.read();
+
+    HOST = 'localhost'  # The remote host
+    PORT = 50007  # The same port as used by the server
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+    print "Connected to server"
+    print "Sending data..."
+    s.sendall(data)
+    print "Data sent"
+    data = s.recv(1024)
+    s.close()
+    with open(outputfile, "w") as f:
+        f.write(data)
+    print "Outputted server response to ", outputfile
+
 if __name__ == "__main__":
     main(sys.argv[1:])
