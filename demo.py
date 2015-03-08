@@ -127,7 +127,6 @@ print ParseOMfile('tst/interval.xml')
 print ParseOMfile('tst/matrix.xml')
 print ParseOMfile('tst/factorial.xml')
 print ParseOMfile('tst/dict.xml')
-print '*****************************'
 print ParseOMfile('tst/omattr.xml')
 
 print "\n\tOutput to OpenMath file:\n"

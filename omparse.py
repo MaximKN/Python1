@@ -75,28 +75,14 @@ def oms_arith1_pow(obj):
 
 
 def oms_arith1_sum(obj):
-    #assert len(obj) == 2, "SUM requires two elements"
+    assert len(obj) >= 1, "SUM requires at least one element"
     return reduce(lambda x, y: x + y, obj[0])
-    
-def oms_arith1_product(obj):
-    #assert len(obj) == 2, "PRODUCT requires two elements"
-    return reduce(lambda x, y: x * y, obj[0])
-        
+
+
 def oms_arith1_root(obj):
-    #assert len(obj) == 2, "ROOT requires two elements"
+    assert len(obj) == 2, "ROOT requires two elements"
     return obj[0] ** 1 / obj[1]
 
-def oms_arith1_abs(obj):
-    #assert len(obj) == 2, "ABS requires two elements"
-    return abs(obj[0])
-
-def oms_arith1_gcd(obj):
-    #assert len(obj) == 2, "GCD requires two elements"
-    return gcd(obj[0], obj[1])
-   
-def oms_arith1_lcm(obj):
-    #assert len(obj) == 2, "LCM requires two elements"
-    return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
 
 def oms_arith1_product(obj):
     assert len(obj) >= 1, "PRODUCT requires at least one element"
@@ -186,7 +172,6 @@ def oms_linalg2_matrixrow(obj):
     t = type(obj[0])
     for i in obj:
         assert t == type(i)
-    t = type(i)
     assert t == float or t == int
     return obj
 
@@ -248,8 +233,7 @@ def ParseOMA(node):
     return elts[0](elts[1:])
 
 def ParseOMATTR(node):
-    return node[1]
-
+    return ParseOMelement(node[1])
 
 def ParseOMATP(node):
     return node

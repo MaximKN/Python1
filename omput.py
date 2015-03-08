@@ -79,9 +79,9 @@ def OMRational(x):
         omelt.insert(3, OMelement(x.denominator))
         return omelt
     else: # TODO open math error ome 3.1.2
-        ome = Element("OME");
-        oms = Element("OMS");
-        oma = Element("OMA");
+        ome = Element("OME")
+        oms = Element("OMS")
+        oma = Element("OMA")
         oms.attrib = {'cd': 'aritherror', 'name': 'divide'}
 ############################################################
 #
