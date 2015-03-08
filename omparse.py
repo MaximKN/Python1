@@ -38,7 +38,7 @@ def ParseOMV(node):
 #
 omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
            'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {},
-           'dictionary': {}}
+           'dictionary': {}, 'error': {}}
 
 
 # list1    http://www.openmath.org/cd/list1.xhtml
@@ -48,10 +48,9 @@ def oms_list1_list(list):
 
 omdicts['list1']['list'] = oms_list1_list
 
-################################################################
-#
+#####################################
 # OpenMath all arithmetic operations
-#
+#####################################
 
 def oms_arith1_plus(obj):
     assert len(obj) == 2, "PLUS requires two elements"
@@ -122,14 +121,13 @@ omdicts['arith1']['abs']     = oms_arith1_abs
 omdicts['arith1']['gcd']     = oms_arith1_gcd
 omdicts['arith1']['lcm']     = oms_arith1_lcm
 
+################################
+# OpenMath all basic data types
+################################
+
 # logic1	http://www.openmath.org/cd/logic1.xhtml
 omdicts['logic1']['true']  = True
 omdicts['logic1']['false'] = False
-
-################################################################
-#
-# OpenMath all basic data types
-#
 
 # nums1     http://www.openmath.org/cd/nums1.xhtml
 # nums1.rational
@@ -221,8 +219,11 @@ def oms_dictionary_dict(obj):
 # dictionary.dict
 omdicts['dictionary']['dict'] = oms_dictionary_dict
 
-################################################################
 
+# error http://www.openmath.org/cd/error.xhtml
+#omdicts['error']
+
+################################################################
 
 def ParseOMS(node):
     # returns a function or an object
@@ -241,18 +242,19 @@ def ParseOMATTR(node):
 
 def ParseOMATP(node):
     return node
+    
+def ParseOME(node):
+    assert len(node) > 0
+    return node[0].attrib['name']
 
-
-ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV, 'OMF': ParseOMF,
-                         'OMS': ParseOMS, 'OMA': ParseOMA, 'OMATTR': ParseOMATTR, 'OMATP': ParseOMATP}
-
+ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV,
+                         'OMF': ParseOMF, 'OMS': ParseOMS, 'OMA': ParseOMA,
+                         'OMATTR': ParseOMATTR, 'OMATP': ParseOMATP,
+                         'OME': ParseOME}
 
 def ParseOMelement(obj):
     return ParseOMelementHandler[obj.tag](obj)
 
-
 def ParseOMroot(root):
     return ParseOMelement(root[0])
 
-
-################################################################

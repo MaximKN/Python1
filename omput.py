@@ -20,26 +20,7 @@ def OMInt(x):
     omelt.text = str(x)
     return omelt
 
-
 ################################################################
-#
-# List (list1.list)
-#
-def OMList(x):
-
-
-    omelt = Element("OMA")
-    oms   = Element("OMS")
-    oms.attrib = {'cd': 'list1', 'name': 'list'}
-    omelt.insert(1, oms)
-    n = 1
-    for t in x:
-        n += 1
-        omelt.insert(n, OMelement(t))
-    return omelt
-
-
-###############################################################
 #
 # OpenMath string (OMSTR)
 #
@@ -47,7 +28,6 @@ def OMString(x):
     omelt = Element("OMSTR")
     omelt.text = x
     return omelt
-
 
 ################################################################
 #
@@ -58,40 +38,54 @@ def OMFloat(x):
     omelt.attrib['dec'] = str(x)
     return omelt
 
-
-#############################################################
+################################################################
 #
-# OpenMath bool (OMS)
+# OpenMath boolean (OMS)
 #
 def OMBool(x):
     omelt = Element("OMS")
     omelt.attrib = {'cd': 'logic1', 'name': str(x).lower()}
     return omelt
 
-
-#############################################################
+################################################################
 #
-# OpenMath rational (OMS)
+# List (list1.list)
+#
+def OMList(x):
+    omelt = Element("OMA")
+    oms   = Element("OMS")
+    oms.attrib = {'cd': 'list1', 'name': 'list'}
+    omelt.insert(1, oms)
+    n = 1
+    for t in x:
+        n += 1
+        omelt.insert(n, OMelement(t))
+    return omelt
+
+################################################################
+#
+# Rational (nums1.rational)
 #
 def OMRational(x):
+    omelt = Element("OMA")
+    oms   = Element("OMS")
+    oms.attrib = {'cd': 'nums1', 'name': 'rational'}
+    omelt.insert(1, oms)
+    omelt.insert(2, OMelement(x.numerator))
+    omelt.insert(3, OMelement(x.denominator))
+        
     if (x.denominator != 0): 
-        omelt = Element("OMA")
-        oms   = Element("OMS")
-        oms.attrib = {'cd': 'nums1', 'name': 'rational'}
-        omelt.insert(1, oms)
-        omelt.insert(2, OMelement(x.numerator))
-        omelt.insert(3, OMelement(x.denominator))
         return omelt
-    else: # TODO open math error ome 3.1.2
-        ome = Element("OME")
-        oms = Element("OMS")
-        oma = Element("OMA")
-        oms.attrib = {'cd': 'aritherror', 'name': 'divide'}
+    else:
+        ome  = Element("OME")
+        oms1 = Element("OMS")
+        oms1.attrib = {'cd': 'aritherror', 'name': 'DivisionByZero'}
+        ome.insert(1, oms1);
+        ome.insert(2, omelt); 
 
-
-############################################################
+################################################################
 #
-# OpenMath complex (OMS)
+# Cartesian (complex1.cartesian)
 #
 def OMComplex(x):
     omelt = Element("OMA")
@@ -101,7 +95,6 @@ def OMComplex(x):
     omelt.insert(2, OMelement(x.real))
     omelt.insert(3, OMelement(x.imag))
     return omelt
-
 
 def OMDict(x):
     omelt = Element("OMA")
@@ -145,7 +138,6 @@ def OMMatrix(x):
 
     return omelt
 
-
 ################################################################
 #
 # OMelement
@@ -183,5 +175,4 @@ def OMobject(x):
     omobj = Element("OMOBJ")
     omobj.insert(1, OMelement(x))
     return omobj
-
-################################################################
+    
