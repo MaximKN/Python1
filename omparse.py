@@ -1,6 +1,5 @@
 from fractions import *
 from math import *
-
 ################################################################
 #
 # Basic OpenMath elements
@@ -217,7 +216,9 @@ omdicts['dictionary']['keyval'] = oms_dictionary_keyval
 
 
 def oms_dictionary_dict(obj):
-    return obj
+    # print "**",obj
+    return dict((x[0], x[1]) for x in obj)
+    #return obj
 
 # dictionary.dict
 omdicts['dictionary']['dict'] = oms_dictionary_dict
