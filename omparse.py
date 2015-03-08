@@ -2,13 +2,12 @@
 #
 # Parsing OpenMath objects
 #
-
-from fractions import *
-from math import *
-
-from numpy import matrix
-
-
+from __future__ import division
+from fractions  import Fraction, gcd
+from math       import factorial
+from numpy      import matrix
+from operator   import add, mul, sub, truediv, pow
+import sys, operator
 
 ################################################################
 #
@@ -17,20 +16,40 @@ from numpy import matrix
 
 # OpenMath integer
 def ParseOMI(node):
-    return int(node.text)
-
+    try:
+        return int(node.text)
+    except TypeError:
+        print "Couldn't find any integers in <OMI> tag."
+    except ValueError:
+        print "\"%s\" couldn't be converted into integer." % node.text
+        
 # OpenMath float
 def ParseOMF(node):
-    return float(node.attrib['dec'])
-
+    try:
+        return float(node.attrib['dec'])
+    except KeyError:
+        print "Oops! Couldn't find float in decimal notation. "\
+                        "Are you using hexadecimal?"
+    except ValueError:
+        print "Float's decimal notation is illegal. "\
+                    "Do you have any characters in it?"
+    
 # OpenMath string
 def ParseOMSTR(node):
     return node.text
-
+    
 # OpenMath variable
 def ParseOMV(node):
-    return node.attrib['name']
-
+    try:
+        name = node.attrib['name']
+        # make sure variable name contains at least one character
+        if (len(name) == 0):
+            print "Variable's name needs to have at least one character."
+        else:
+            return node.attrib['name']
+    except KeyError:
+        print "Variable's name could not be determined. "\
+                        "Did you supply a name attribute?"
 
 ################################################################
 #
@@ -38,7 +57,7 @@ def ParseOMV(node):
 #
 omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
            'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {},
-           'dictionary': {}, 'error': {}}
+           'dictionary': {}}
 
 
 # list1    http://www.openmath.org/cd/list1.xhtml
@@ -49,72 +68,75 @@ def oms_list1_list(list):
 omdicts['list1']['list'] = oms_list1_list
 
 #####################################
-# OpenMath all arithmetic operations
+# OpenMath arithmetic operations
 #####################################
 
-def oms_arith1_plus(obj):
-    assert len(obj) == 2, "PLUS requires two elements"
-    return obj[0] + obj[1]
+def oms_arith1_apply_op(obj, op):
+    try:
+        return op(obj[0], obj[1])
+    except IndexError:
+        print "Arithmetic calculation returns two operands"
+    except TypeError:
+        print "Invalid operand types"
 
-
-def oms_arith1_minus(obj):
-    assert len(obj) == 2, "MINUS requires two elements"
-    return obj[0] - obj[1]
-
-
-def oms_arith1_times(obj):
-    assert len(obj) == 2, "TIMES requires two elements"
-    return obj[0] * obj[1]
-
-
-def oms_arith1_divide(obj):
-    assert len(obj) == 2, "DIVIDE requires two elements"
-    return obj[0] / obj[1]
-
-
-def oms_arith1_pow(obj):
-    assert len(obj) == 2, "POWER requires two elements"
-    return obj[0] ** obj[1]
-
-
+'''
+Basic arithmetic operations
+'''      
+def oms_arith1_plus(obj):   return oms_arith1_apply_op(obj, add)
+def oms_arith1_minus(obj):  return oms_arith1_apply_op(obj, sub)
+def oms_arith1_times(obj):  return oms_arith1_apply_op(obj, mul)
+def oms_arith1_divide(obj): return oms_arith1_apply_op(obj, truediv)
+def oms_arith1_pow(obj):    return oms_arith1_apply_op(obj, pow)
+    
 def oms_arith1_sum(obj):
-    assert len(obj) >= 1, "SUM requires at least one element"
-    return reduce(lambda x, y: x + y, obj[0])
-
+    try:
+        return sum(obj[0])
+    except IndexError:
+        print "SUM requires at least one element"
+    except TypeError:
+        print "Invalid operand types from SUM"
 
 def oms_arith1_root(obj):
-    assert len(obj) == 2, "ROOT requires two elements"
-    return obj[0] ** 1 / obj[1]
-
-
+    try:
+        return obj[0] ** (1 / obj[1])
+    except IndexError:
+        print "ROOT requires two elements"
+    except TypeError:
+        print "Invalid operand types from ROOT"
+        
 def oms_arith1_product(obj):
-    assert len(obj) >= 1, "PRODUCT requires at least one element"
-    return reduce(lambda x, y: x * y, obj[0])
-
-
+    try:
+        return map(mul, obj[0])
+    except IndexError:
+        print "PRODUCT requires at least one element"
+        
 def oms_arith1_abs(obj):
-    assert len(obj) == 1, "ABS requires one element"
-    return abs(obj[0])
-
-
+    try:
+        return abs(obj[0])
+    except IndexError:
+        print "ABS requires at least one element"
+        
 def oms_arith1_gcd(obj):
-    assert len(obj) == 2, "GCD requires two elements"
-    return gcd(obj[0], obj[1])
-
-
+    try:
+        return gcd(obj[0], obj[1])
+    except IndexError:
+        print "GCD requires at least one element"
+        
 def oms_arith1_lcm(obj):
-    assert len(obj) == 2, "LCM requires at two elements"
-    return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
-
-
+    try:
+        return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
+    except IndexError:
+        print "LCM requires at least one element"
+        
+        
 # arith1 http://www.openmath.org/cd/arith1.xhtml
 # Basic arithmetic operations
-omdicts['arith1']['plus'] = oms_arith1_plus
-omdicts['arith1']['minus'] = oms_arith1_minus
-omdicts['arith1']['times'] = oms_arith1_times
-omdicts['arith1']['divide'] = oms_arith1_divide
-omdicts['arith1']['pow']    = oms_arith1_pow
-omdicts['arith1']['sum'] = oms_arith1_sum
+omdicts['arith1']['plus']    = oms_arith1_plus
+omdicts['arith1']['minus']   = oms_arith1_minus
+omdicts['arith1']['times']   = oms_arith1_times
+omdicts['arith1']['divide']  = oms_arith1_divide
+omdicts['arith1']['pow']     = oms_arith1_pow
+omdicts['arith1']['sum']     = oms_arith1_sum
 omdicts['arith1']['product'] = oms_arith1_product
 omdicts['arith1']['root']    = oms_arith1_root
 omdicts['arith1']['abs']     = oms_arith1_abs
@@ -132,61 +154,70 @@ omdicts['logic1']['false'] = False
 # nums1     http://www.openmath.org/cd/nums1.xhtml
 # nums1.rational
 def oms_nums1_rational(obj):
-    assert len(obj) == 2, "Rational requires exactly two elements."
-    t = type(obj[0])
-    assert t is int and t == type(obj[1]), "Rational only accepts integer values."
-    assert obj[1] != 0, "Denominator of rational needs to be non-integer"
-    return Fraction(obj[0], obj[1])
-
-
+    try:
+        return Fraction(obj[0], obj[1])
+    except IndexError:
+        print "Rational requires at two elements"
+    except TypeError:
+        print "Invalid type for rational" 
+    except ZeroDivisionError:
+        print "Can't divide by zero"
+       
 omdicts['nums1']['rational'] = oms_nums1_rational
 
 
 # complex1  http://www.openmath.org/cd/complex1.xhtml
 # complex1.complex_cartesian
 def oms_complex1_cartesian(obj):
-    assert len(obj) == 2, "Complex cartesian requires exactly two elements."
-    t1 = type(obj[0])
-    t2 = type(obj[1])
-    assert t1 == int or t1 == float or t1 == Fraction
-    assert t2 == int or t2 == float or t2 == Fraction
-    return complex(obj[0], obj[1])
-
+    try:
+        return complex(obj[0], obj[1])
+    except IndexError:
+        print "Complex cartesian requires two elements"
+    except TypeError:
+        print "Invalid type being used for complex number"
+        
 omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 
 
 # interval1 http://www.openmath.org/cd/interval1.xhtml
 # interval1.integer_interval
 def oms_interval1_interval(obj):
-    assert len(obj) == 2
-    t = type(obj[0])
-    assert t == type(obj[1]) and t == int
-    return list(range(obj[0], obj[1] + 1))
-
+    try:
+        return range(obj[0], obj[1] + 1)
+    except IndexError:
+        print "Interval requires two elements for range"
+    except TypeError:
+        print "Invalid types used for interval"
+        
 omdicts['interval1']['integer_interval'] = oms_interval1_interval
 
 
 # linalg2   http://www.openmath.org/cd/linalg2.xhtml
 # linalg2.matrixrow
 def oms_linalg2_matrixrow(obj):
-    assert len(obj) > 0
-    # check all cells have the same type
-    t = type(obj[0])
-    for i in obj:
-        assert t == type(i)
-    assert t == float or t == int
-    return obj
-
+    try:
+        # check all cells have the same type
+        t = type(obj[0])
+        for i in obj:
+            if t != type(i):
+                print "Matrix row's cells must all contain the same type"
+                exit()
+        assert t == float or t == int, "Matrix can only contain ints or floats"
+        return obj
+    except IndexError:
+        print "Need to have at least one element in matrix row"
+        
 omdicts['linalg2']['matrixrow'] = oms_linalg2_matrixrow
 
 # linalg2.matrix
 def oms_linalg2_matrix(obj):
-    assert len(obj) > 0
-    length = len(obj[0])
-    for row in obj:
-        assert len(row) == length, "Rows in matrix need to equal size"
-    return matrix(obj)
-
+    try:
+        for row in obj:
+            assert len(row) == length, "Rows in matrix need to equal size"
+        return matrix(obj)
+    except IndexError:
+        print "Need to have at least one row in matrix"
+        
 def oms_linalg2_matrix_dict(obj):
     keys = obj[0]
     data = [dict(zip(keys, values)) for values in obj[1:]]
@@ -253,8 +284,11 @@ ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV,
                          'OME': ParseOME}
 
 def ParseOMelement(obj):
-    return ParseOMelementHandler[obj.tag](obj)
-
+    try:
+        return ParseOMelementHandler[obj.tag](obj)
+    except:
+        print "Unexpected error:", sys.exc_info()[0]
+        
 def ParseOMroot(root):
     return ParseOMelement(root[0])
 

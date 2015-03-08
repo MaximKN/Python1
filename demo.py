@@ -118,6 +118,9 @@ print ">>", ParseOMstring(s)
 s = '<OMOBJ><OMA><OMS cd="dictionary" name="dict"/><OMA><OMS cd="dictionary" name="keyval"/><OMSTR>a</OMSTR><OMI>10</OMI></OMA><OMA><OMS cd="dictionary" name="keyval"/><OMSTR>b</OMSTR><OMI>20</OMI></OMA><OMA><OMS cd="dictionary" name="keyval"/><OMI>2</OMI><OMSTR>blue</OMSTR></OMA></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
 
+s = '<OMOBJ><OMF/></OMOBJ>'
+print ">>", ParseOMstring(s)
+
 print "\n\tReading from the file:\n"
 print ParseOMfile('tst/integer.xml')
 print ParseOMfile('tst/list.xml')
