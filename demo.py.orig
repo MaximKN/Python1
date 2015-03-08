@@ -1,8 +1,6 @@
 from openmath import *
 
-'''
-Parse Arithmetic Operations XML files
-'''
+<<<<<<< HEAD
 print "Arithmetic operations:"
 
 s = '<OMOBJ><OMA><OMS cd="arith1" name="plus"/><OMI>42</OMI> <OMI>43</OMI></OMA></OMOBJ>'
@@ -20,23 +18,24 @@ print ">>", ParseOMstring(s)
 s = '<OMOBJ><OMA><OMS cd="arith1" name="pow"/><OMI>2</OMI> <OMI>3</OMI></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
 
-s = '<OMOBJ><OMA><OMS cd="arith1" name="sum"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
-print ">>", ParseOMstring(s)
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="sum"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
 
-s = '<OMOBJ><OMA><OMS cd="arith1" name="product"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
-print ">>", ParseOMstring(s)
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="product"/><OMA><OMS cd="interval1" name="integer_interval"/><OMI>1</OMI><OMI>10</OMI></OMA></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
 
 s = '<OMOBJ><OMA><OMS cd="arith1" name="root"/><OMI>4</OMI><OMI>2</OMI></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
 
-s = '<OMOBJ><OMA><OMS cd="arith1" name="abs"/><OMI>-4</OMI></OMA></OMOBJ>'
-print ">>", ParseOMstring(s)
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="abs"/><OMI>-4</OMI></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
 
-s = '<OMOBJ><OMA><OMS cd="arith1" name="gcd"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
-print ">>", ParseOMstring(s)
+#s = '<OMOBJ><OMA><OMS cd="arith1" name="gcd"/><OMI>20</OMI><OMI>8</OMI><OMI>4</OMI></OMA></OMOBJ>'
+#print ">>", ParseOMstring(s)
 
 s = '<OMOBJ><OMA><OMS cd="arith1" name="lcm"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
+=======
 
 print "\n\tBasic arithmetic operations:\n"
 
@@ -73,6 +72,7 @@ print "great common divisor 20 8 =  ", ParseOMstring(s)
 
 s = '<OMOBJ><OMA><OMS cd="arith1" name="lcm"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
 print "least common multiplier 20 8 = ", ParseOMstring(s)
+>>>>>>> 3241d4050bf5f9c366c6e01c50dddf76c9cb8bfd
 
 print "\n\tBasic requirement:\n"
 
@@ -130,8 +130,6 @@ print ParseOMfile('tst/interval.xml')
 print ParseOMfile('tst/matrix.xml')
 print ParseOMfile('tst/factorial.xml')
 print ParseOMfile('tst/dict.xml')
-print '*****************************'
-print ParseOMfile('tst/omattr.xml')
 
 print "\n\tOutput to OpenMath file:\n"
 
@@ -159,9 +157,8 @@ OMprint([1, Fraction(1, 2)])
 OMstring(complex(2, 5))
 OMprint(complex(2, 5))
 
-OMstring({'a': 10, 2: 'blue', 'b': 20})
-OMprint({'a': 10, 2: 'blue', 'b': 20})
-
+OMstring([['yellow', 2], ['blue', 3], [2, 'blue']])
+OMprint([['yellow', 2], ['blue', 3], [2, 'blue']])
 
 
 ################# ERROR CHECKING #####################
@@ -210,6 +207,6 @@ a = complex(Fraction(1, 2), 5)
 b = ParseOMstring(OMstring(a))
 print a, ":", b, " == ", a == b
 
-a = {'a': 10, 2: 'blue', 'b': 20}
+a = [['yellow', 2], ['blue', 3], [2, 'blue']]
 b = ParseOMstring(OMstring(a))
 print a, ":", b, "==", a == b

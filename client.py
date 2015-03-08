@@ -31,6 +31,10 @@ def main(argv):
        		host = arg
     send(inputfile, outputfile, host, port)
 
+"""
+Send OpenMath doc to server and
+get response
+"""
 def send(inputfile, outputfile):
     # get contents of file
     with open(inputfile, "r") as f:
