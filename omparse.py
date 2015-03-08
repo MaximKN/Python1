@@ -15,16 +15,13 @@ from math import *
 def ParseOMI(node):
     return int(node.text)
 
-
 # OpenMath float
 def ParseOMF(node):
     return float(node.attrib['dec'])
 
-
 # OpenMath string
 def ParseOMSTR(node):
     return node.text
-
 
 # OpenMath variable
 def ParseOMV(node):
@@ -36,7 +33,8 @@ def ParseOMV(node):
 # OpenMath content dictionaries
 #
 omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
-           'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {}, 'dictionary': {}}
+           'interval1': {}, 'linalg2': {}, 'integer1': {}, 'arith1': {},
+           'dictionary': {}}
 
 # list1    http://www.openmath.org/cd/list1.xhtml
 # list1.list
@@ -62,69 +60,53 @@ def oms_arith1_pow(obj):
     return reduce(lambda x, y: x ** y, obj)
 
 def oms_arith1_sum(obj):
-    try:
-        return reduce(lambda x, y: x + y, obj[0])
-    except ValueError:
-        return "Error: less than one interval in SUM"
-
+    #assert len(obj) == 2, "SUM requires two elements"
+    return reduce(lambda x, y: x + y, obj[0])
+    
 def oms_arith1_product(obj):
-    try:
-        return reduce(lambda x, y: x * y, obj[0])
-    except ValueError:
-        return "Error: less than one interval in PRODUCT"
-
+    #assert len(obj) == 2, "PRODUCT requires two elements"
+    return reduce(lambda x, y: x * y, obj[0])
+        
 def oms_arith1_root(obj):
-    try:
-        return obj[0] ** 1 / obj[1]
-    except ValueError:
-        return "Error: less than two variables in ROOT"
+    #assert len(obj) == 2, "ROOT requires two elements"
+    return obj[0] ** 1 / obj[1]
 
 def oms_arith1_abs(obj):
-    try:
-        return abs(obj[0])
-    except ValueError:
-        return "Error: less than one variable in ABS"
+    #assert len(obj) == 2, "ABS requires two elements"
+    return abs(obj[0])
 
 def oms_arith1_gcd(obj):
-    try:
-        return gcd(obj[0], obj[1])
-    except ValueError:
-        return "Error: less than one variable in GCD"
-
+    #assert len(obj) == 2, "GCD requires two elements"
+    return gcd(obj[0], obj[1])
+   
 def oms_arith1_lcm(obj):
-    try:
-        return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
-    except ValueError:
-        return "Error: less than one variable in LCM"
+    #assert len(obj) == 2, "LCM requires two elements"
+    return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
 
 # arith1
-omdicts['arith1']['plus'] = oms_arith1_plus
-omdicts['arith1']['minus'] = oms_arith1_minus
-omdicts['arith1']['times'] = oms_arith1_times
+omdicts['arith1']['plus']   = oms_arith1_plus
+omdicts['arith1']['minus']  = oms_arith1_minus
+omdicts['arith1']['times']  = oms_arith1_times
 omdicts['arith1']['divide'] = oms_arith1_divide
-omdicts['arith1']['pow'] = oms_arith1_pow
+omdicts['arith1']['pow']    = oms_arith1_pow
 
-omdicts['arith1']['sum'] = oms_arith1_sum
+omdicts['arith1']['sum']     = oms_arith1_sum
 omdicts['arith1']['product'] = oms_arith1_product
-omdicts['arith1']['root'] = oms_arith1_root
-omdicts['arith1']['abs'] = oms_arith1_abs
-omdicts['arith1']['gcd'] = oms_arith1_gcd
-omdicts['arith1']['lcm'] = oms_arith1_lcm
+omdicts['arith1']['root']    = oms_arith1_root
+omdicts['arith1']['abs']     = oms_arith1_abs
+omdicts['arith1']['gcd']     = oms_arith1_gcd
+omdicts['arith1']['lcm']     = oms_arith1_lcm
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml
-# logic1.true
-omdicts['logic1']['true'] = True
-
-# logic1.false
+omdicts['logic1']['true']  = True
 omdicts['logic1']['false'] = False
-
 
 # nums1     http://www.openmath.org/cd/nums1.xhtml
 # nums1.rational
 def oms_nums1_rational(obj):
     assert len(obj) == 2, "Rational requires exactly two elements."
     t = type(obj[0])
-    assert t == type(obj[1]) and t is int, "Rational only accepts integer values."
+    assert t == type(obj[1]) and t is int, "Rational only accepts integers."
     assert obj[1] != 0, "Denominator of rational needs to be non-integer"
     return Fraction(obj[0], obj[1])
 
@@ -139,7 +121,6 @@ def oms_complex1_cartesian(obj):
     real = obj[0]
     imag = obj[1]
     return complex(real, imag)
-
 
 omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 
@@ -211,12 +192,12 @@ def ParseOMA(node):
     elts = []
     for child in node.findall("*"):
         elts.append(ParseOMelement(child))
-    # now the first element of 'elts' is a function to be applied to the rest of the list
+    # first element of 'elts' is a function to be applied to the rest of list
     return elts[0](elts[1:])
 
 
-ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV, 'OMF': ParseOMF, 'OMS': ParseOMS,
-                         'OMA': ParseOMA}
+ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV,
+                         'OMF': ParseOMF, 'OMS': ParseOMS, 'OMA': ParseOMA}
 
 
 def ParseOMelement(obj):
