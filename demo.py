@@ -130,7 +130,6 @@ print ParseOMfile('tst/interval.xml')
 print ParseOMfile('tst/matrix.xml')
 print ParseOMfile('tst/factorial.xml')
 print ParseOMfile('tst/dict.xml')
-print ParseOMfile('tst/omattr.xml')
 
 print "\n\tOutput to OpenMath file:\n"
 
@@ -158,21 +157,26 @@ OMprint([1, Fraction(1, 2)])
 OMstring(complex(2, 5))
 OMprint(complex(2, 5))
 
-OMstring({'a': 10, 2: 'blue', 'b': 20})
-OMprint({'a': 10, 2: 'blue', 'b': 20})
-
+OMstring([['yellow', 2], ['blue', 3], [2, 'blue']])
+OMprint([['yellow', 2], ['blue', 3], [2, 'blue']])
 
 
 ################# ERROR CHECKING #####################
 
-#s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMV name="x"/></OMA> </OMOBJ>' 
+#s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMV name="x"/></OMA> </OMOBJ>'
 #print "error-check >>>", ParseOMstring(s)
 
 #s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMI>5</OMI> <OMI>4</OMI> </OMA> </OMOBJ>'
 #print "error-check >>>", ParseOMstring(s)
 
 #s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMV name="x"/> <OMV name="y"/> </OMA> </OMOBJ>'
-#print "error-check >>>", ParseOMstring(s) 
+#print "error-check >>>", ParseOMstring(s)
+
+#s = '<OMOBJ> <OMA> <OMS cd="nums1" name="rational"/> <OMI>2</OMI> <OMI>0</OMI> </OMA> </OMOBJ>'
+#print "error-check >>>", ParseOMstring(s)
+
+s = '<OMOBJ><OME><OMS cd="error" name="unhandled_symbol"/><OMS cd="setname1" name="C"/></OME></OMOBJ>'
+print "error-check >>>>", ParseOMstring(s)
 
 ######################################################
 
@@ -209,6 +213,6 @@ a = complex(Fraction(1, 2), 5)
 b = ParseOMstring(OMstring(a))
 print a, ":", b, " == ", a == b
 
-a = {'a': 10, 2: 'blue', 'b': 20}
+a = [['yellow', 2], ['blue', 3], [2, 'blue']]
 b = ParseOMstring(OMstring(a))
 print a, ":", b, "==", a == b
