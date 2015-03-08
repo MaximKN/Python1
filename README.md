@@ -35,7 +35,7 @@ To run some tests, type `python test.py`. This file extensively tests all OpenMa
 ## Sockets
 First run the server using,
     `python server.py &`
-This will bind to the localhost and listen on a specific port.
+This will bind to the localhost and listen on a specific port (50007).
 
 Then run the client using,
     `python client.py`
