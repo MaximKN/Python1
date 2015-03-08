@@ -248,11 +248,11 @@ def ParseOMA(node):
     return elts[0](elts[1:])
 
 def ParseOMATTR(node):
-    pass
+    return node[1]
 
 
 def ParseOMATP(node):
-    pass
+    return node
 
 
 ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV, 'OMF': ParseOMF,
