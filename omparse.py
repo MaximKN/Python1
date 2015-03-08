@@ -1,16 +1,15 @@
-from fractions import *
-from math import *
-
 ################################################################
 #
 # Parsing OpenMath objects
 #
 
+from fractions import *
+from math import *
+
 ################################################################
 #
 # Basic OpenMath elements
 #
-
 
 # OpenMath integer
 def ParseOMI(node):
@@ -44,9 +43,9 @@ omdicts = {'list1': {}, 'nums1': {}, 'complex1': {}, 'logic1': {},
 def oms_list1_list(list):
     return list
 
-
 omdicts['list1']['list'] = oms_list1_list
 
+# arithmetic operators
 def oms_arith1_plus(obj):
     return reduce(lambda x, y: x + y, obj)
 
@@ -194,7 +193,6 @@ def oms_dictionary_keyval(obj):
 
 # dictionary.keyval
 omdicts['dictionary']['keyval'] = oms_dictionary_keyval
-
 
 def oms_dictionary_dict(obj):
     return obj
