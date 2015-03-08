@@ -29,7 +29,7 @@ print ">>", ParseOMstring(s)
 s = '<OMOBJ><OMA><OMS cd="arith1" name="abs"/><OMI>-4</OMI></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
 
-s = '<OMOBJ><OMA><OMS cd="arith1" name="gcd"/><OMI>20</OMI><OMI>8</OMI><OMI>4</OMI></OMA></OMOBJ>'
+s = '<OMOBJ><OMA><OMS cd="arith1" name="gcd"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
 print ">>", ParseOMstring(s)
 
 s = '<OMOBJ><OMA><OMS cd="arith1" name="lcm"/><OMI>20</OMI><OMI>8</OMI></OMA></OMOBJ>'
@@ -127,6 +127,7 @@ print ParseOMfile('tst/interval.xml')
 print ParseOMfile('tst/matrix.xml')
 print ParseOMfile('tst/factorial.xml')
 print ParseOMfile('tst/dict.xml')
+print '*****************************'
 print ParseOMfile('tst/omattr.xml')
 
 print "\n\tOutput to OpenMath file:\n"

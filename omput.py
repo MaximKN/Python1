@@ -96,6 +96,27 @@ def OMComplex(x):
     omelt.insert(3, OMelement(x.imag))
     return omelt
 
+
+def OMDict(x):
+    omelt = Element("OMA")
+    oms = Element("OMS")
+    oms.attrib = {'cd': 'dictionary', 'name': 'dict'}
+    omelt.insert(1, oms)
+    n = 2
+
+    for key, value in x.iteritems():
+        omelt1 = Element("OMA")
+        oms1 = Element("OMS")
+        oms1.attrib = {'cd': 'dictionary', 'name': 'keyval'}
+        omelt1.insert(1, oms1)
+
+        omelt1.insert(2, OMelement(key))
+        omelt1.insert(3, OMelement(value))
+
+        omelt.insert(n, omelt1)
+        n += 1
+
+    return omelt
 ################################################################
 #
 # OMelement
@@ -118,6 +139,8 @@ def OMelement(x):
         return OMComplex(x)
     elif t == Fraction:
         return OMRational(x)
+    elif t == dict:
+        return OMDict(x)
 
 ################################################################
 #
