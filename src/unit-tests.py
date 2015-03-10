@@ -2,6 +2,7 @@ import unittest
 
 from openmath import *
 
+
 class TestIntegers(unittest.TestCase):
     def test_int(self):
         a = -50
@@ -17,6 +18,7 @@ class TestIntegers(unittest.TestCase):
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestIntegers)
 unittest.TextTestRunner(verbosity=2).run(suite)
+
 
 class TestStrings(unittest.TestCase):
     def test_string(self):
@@ -34,6 +36,7 @@ class TestStrings(unittest.TestCase):
 suite1 = unittest.TestLoader().loadTestsFromTestCase(TestStrings)
 unittest.TextTestRunner(verbosity=2).run(suite1)
 
+
 class TestFloats(unittest.TestCase):
     def test_float(self):
         a = [0, 1., 0.5, -1.]
@@ -49,6 +52,7 @@ class TestFloats(unittest.TestCase):
 
 suite2 = unittest.TestLoader().loadTestsFromTestCase(TestFloats)
 unittest.TextTestRunner(verbosity=2).run(suite2)
+
 
 class TestBooleans(unittest.TestCase):
     def test_bool_False(self):
@@ -70,6 +74,7 @@ class TestBooleans(unittest.TestCase):
 
 suite3 = unittest.TestLoader().loadTestsFromTestCase(TestBooleans)
 unittest.TextTestRunner(verbosity=2).run(suite3)
+
 
 class TestLists(unittest.TestCase):
     def test_list(self):
@@ -111,6 +116,7 @@ class TestLists(unittest.TestCase):
 suite4 = unittest.TestLoader().loadTestsFromTestCase(TestLists)
 unittest.TextTestRunner(verbosity=2).run(suite4)
 
+
 class TestSequenceFunctions(unittest.TestCase):
 
     def test_fraction(self):
@@ -140,6 +146,7 @@ class TestSequenceFunctions(unittest.TestCase):
 
 suite5 = unittest.TestLoader().loadTestsFromTestCase(TestSequenceFunctions)
 unittest.TextTestRunner(verbosity=2).run(suite5)
+
 
 class TestInteger1(unittest.TestCase):
     def test_interval_file(self):
