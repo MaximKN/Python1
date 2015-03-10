@@ -78,16 +78,7 @@ def OMRational(x):
     omelt.insert(1, oms)
     omelt.insert(2, OMelement(x.numerator))
     omelt.insert(3, OMelement(x.denominator))
-
-    if x.denominator != 0:
-        return omelt
-    else:
-        ome = Element("OME")
-        oms1 = Element("OMS")
-        oms1.attrib = {'cd': 'aritherror', 'name': 'DivisionByZero'}
-        ome.insert(1, oms1)
-        ome.insert(2, omelt)
-
+    
 
 ################################################################
 #
@@ -192,3 +183,5 @@ def OMobject(x):
     omobj = Element("OMOBJ")
     omobj.insert(1, OMelement(x))
     return omobj
+    
+    

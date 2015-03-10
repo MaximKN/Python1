@@ -6,10 +6,7 @@ from __future__ import division
 from fractions  import Fraction, gcd
 from math       import factorial
 from operator   import add, mul, sub, truediv, pow
-
-from numpy import matrix
-
-
+from numpy      import matrix
 
 ################################################################
 #
@@ -53,6 +50,7 @@ def ParseOMV(node):
         print "Variable's name could not be determined. "\
                         "Did you supply a name attribute?"
 
+
 ################################################################
 #
 # OpenMath content dictionaries
@@ -69,10 +67,14 @@ def oms_list1_list(list):
 
 omdicts['list1']['list'] = oms_list1_list
 
-#####################################
-# OpenMath arithmetic operations
-#####################################
 
+###############################################################
+#
+# OpenMath arithmetic operations
+#
+
+# Apply a passed operator to two elements
+# Operator defined in "operator" module
 def oms_arith1_apply_op(obj, op):
     try:
         return op(obj[0], obj[1])
@@ -89,7 +91,8 @@ def oms_arith1_minus(obj):  return oms_arith1_apply_op(obj, sub)
 def oms_arith1_times(obj):  return oms_arith1_apply_op(obj, mul)
 def oms_arith1_divide(obj): return oms_arith1_apply_op(obj, truediv)
 def oms_arith1_pow(obj):    return oms_arith1_apply_op(obj, pow)
-    
+
+# Sums list of elements together
 def oms_arith1_sum(obj):
     try:
         return sum(obj[0])
@@ -98,6 +101,7 @@ def oms_arith1_sum(obj):
     except TypeError:
         print "Invalid operand types from SUM"
 
+# Finds nth root of obj
 def oms_arith1_root(obj):
     try:
         return obj[0] ** (1 / obj[1])
@@ -105,25 +109,29 @@ def oms_arith1_root(obj):
         print "ROOT requires two elements"
     except TypeError:
         print "Invalid operand types from ROOT"
-        
+
+# Multiplies a list of elements together
 def oms_arith1_product(obj):
     try:
         return reduce(mul, obj[0])
     except IndexError:
         print "PRODUCT requires at least one element"
-        
+
+# Find absolute value
 def oms_arith1_abs(obj):
     try:
         return abs(obj[0])
     except IndexError:
         print "ABS requires at least one element"
-        
+
+# Find greatest common denominator
 def oms_arith1_gcd(obj):
     try:
         return gcd(obj[0], obj[1])
     except IndexError:
         print "GCD requires two elements"
-        
+
+# Find least common multiple
 def oms_arith1_lcm(obj):
     try:
         return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
@@ -144,10 +152,6 @@ omdicts['arith1']['root']    = oms_arith1_root
 omdicts['arith1']['abs']     = oms_arith1_abs
 omdicts['arith1']['gcd']     = oms_arith1_gcd
 omdicts['arith1']['lcm']     = oms_arith1_lcm
-
-################################
-# OpenMath all basic data types
-################################
 
 # logic1	http://www.openmath.org/cd/logic1.xhtml
 omdicts['logic1']['true']  = True
@@ -187,8 +191,7 @@ omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 def oms_interval1_interval(obj):
     try:
         t = range(obj[0], obj[1] + 1)
-        
-        # support for python definition of range returning range type
+        # support for python 3 definition of range returning range type
         if type(t) == list: return t
         else: return list(t)
     except IndexError:
@@ -236,7 +239,7 @@ def oms_linalg2_matrix_dict(obj):
 omdicts['linalg2']['matrix'] = oms_linalg2_matrix
 
 
-# integer1  http://www.openmath.org/cd/integer2.xhtml
+# integer1  http://www.openmath.org/cd/integer1.xhtml
 # integer1.factorial
 def oms_integer1_factorial(obj):
     try:
@@ -250,8 +253,6 @@ def oms_integer1_factorial(obj):
             print "Can't compute factorial of negative integer."
             return
         return factorial(obj[0])
-    except IndexError:
-        print "Factorial must have only one element"
     except TypeError:
         print "Factorial must to be an integer"
 
@@ -275,8 +276,6 @@ def oms_integer1_remainder(obj):
             print "Can't divide 0."
             return
         return obj[0] % obj[1]
-    except IndexError:
-        print "Remainder must have two elements"
     except TypeError:
         print "Remainder must to be an integer"
 
@@ -296,8 +295,6 @@ def oms_integer1_factorof(obj):
             print"Can't compute factor of of a non-integer."
             return
         return obj[0] % obj[1] == 0
-    except IndexError:
-        print "Factor of must have two elements"
     except TypeError:
         print "Factor of must to be an integer"
 
@@ -325,7 +322,6 @@ def oms_integer1_quotient(obj):
 omdicts['integer1']['quotient'] = oms_integer1_quotient
 
 
-
 def oms_dictionary_keyval(obj):
     return obj
 
@@ -337,10 +333,6 @@ def oms_dictionary_dict(obj):
 
 # dictionary.dict
 omdicts['dictionary']['dict'] = oms_dictionary_dict
-
-
-# error http://www.openmath.org/cd/error.xhtml
-#omdicts['error']
 
 ################################################################
 
@@ -363,9 +355,8 @@ def ParseOMATP(node):
     return node
     
 def ParseOME(node):
-    assert len(node) > 0
     return node[0].attrib['name']
-
+    
 ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV,
                          'OMF': ParseOMF, 'OMS': ParseOMS, 'OMA': ParseOMA,
                          'OMATTR': ParseOMATTR, 'OMATP': ParseOMATP,

@@ -2,18 +2,22 @@
 import sys, getopt, os.path
 from openmath import *
 
+"""
+Simplifies OpenMath objects by reducing them down into Python types
+before parsing them again back into OpenMath objects.
+This has the effect of combining numbers together where possible.
+"""
 def simplify(inputfile, outputfile):
-    if os.path.isfile(inputfile):
-        with open(inputfile, "r") as f:
-            data = f.read()
-        with open(outputfile, "w") as f:
-            f.write(OMstring(ParseOMfile(inputfile)))
+    if not os.path.isfile(inputfile):
+        print "%s could not be opened because it doesn't exist, or due to permissions." % inputfile
     else:
-        print "%s could not be opened because it doesn't exist" % inputfile
-
+        try:
+            with open(outputfile, "w") as f:
+                f.write(OMstring(ParseOMfile(inputfile)))
+        except IOError:
+            print "Error occurred while handlying files."
+        
 def main(argv):
-    inputfile  = ''
-    outputfile = ''
     usage = "usage: %s -i <inputfile> -o <outputfile>" % argv[0]
     try:
         opts, args = getopt.getopt(argv[1:],"hi:o:",["ifile=","ofile="])
@@ -28,9 +32,13 @@ def main(argv):
             inputfile = arg
         elif opt in ("-o", "--ofile"):
             outputfile = arg
-    if (inputfile == '') or (outputfile == ''):
+            
+    # check if user hasn't specified inputs
+    if not 'inputfile' in locals()\
+    or not 'outputfile' in locals():
         print usage
-        sys.exit()
+        sys.exit(2)
+        
     simplify(inputfile, outputfile)
 
 if __name__ == "__main__":
