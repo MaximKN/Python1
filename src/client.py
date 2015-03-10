@@ -12,7 +12,7 @@ def main(argv):
     host = 'localhost'
     port = 50007
     try:
-        opts, args = getopt.getopt(argv,"hi:o:a:p",["ifile=","ofile=", "host=", "port="])
+        opts, args = getopt.getopt(argv, "hi:o:a:p", ["ifile=", "ofile=", "host=", "port="])
     except getopt.GetoptError:
         print 'client.py -i <inputfile> -o <outputfile> [-p <port>] [-h <host>]'
         sys.exit(2)
