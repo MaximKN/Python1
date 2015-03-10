@@ -10,6 +10,7 @@ from operator   import add, mul, sub, truediv, pow
 from numpy import matrix
 
 
+
 ################################################################
 #
 # Basic OpenMath elements
@@ -256,6 +257,37 @@ def oms_integer1_factorial(obj):
 
 omdicts['integer1']['factorial'] = oms_integer1_factorial
 
+
+# integer1.remainder
+def oms_integer1_remainder(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    assert obj[0] > 0
+    return obj[0] % obj[1]
+
+
+omdicts['integer1']['remainder'] = oms_integer1_remainder
+
+# integer1.factorof
+def oms_integer1_factorof(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    return obj[0] % obj[1] == 0
+
+
+omdicts['integer1']['factorof'] = oms_integer1_factorof
+
+# integer1.quotient
+def oms_integer1_quotient(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    return obj[0] / obj[1]
+
+
+omdicts['integer1']['quotient'] = oms_integer1_quotient
 
 def oms_dictionary_keyval(obj):
     return obj
