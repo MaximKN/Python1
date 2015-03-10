@@ -107,7 +107,7 @@ def oms_arith1_root(obj):
         
 def oms_arith1_product(obj):
     try:
-        return map(mul, obj[0])
+        return reduce(mul, obj[0])
     except IndexError:
         print "PRODUCT requires at least one element"
         
