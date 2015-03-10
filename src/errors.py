@@ -13,7 +13,13 @@ tests = ["<OMOBJ><OMF hex='FFF8000000000001'/></OMOBJ>", "<OMOBJ><OMI></OMI></OM
          '<OMOBJ> <OMA> <OMS cd="linalg2" name="matrix"/> <OMA> <OMS cd="linalg2" name="matrixrow"/> <OMI>1</OMI> <OMI>2</OMI> <OMI>3</OMI> </OMA> <OMA> <OMS cd="linalg2" name="matrixrow"/> <OMI>42</OMI> <OMI>5</OMI> </OMA> <OMA> <OMS cd="linalg2" name="matrixrow"/> <OMI>0</OMI>  </OMA> </OMA> </OMOBJ>',
          '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/></OMA> </OMOBJ>',
          '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/><OMSTR>4</OMSTR></OMA> </OMOBJ>',
-         '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/><OMI>-6</OMI></OMA> </OMOBJ>']
+         '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/><OMI>-6</OMI></OMA> </OMOBJ>',
+         '<OMOBJ> <OMA> <OMS cd="integer1" name="remainder"/> <OMI>5</OMI> <OMI>2.5</OMI> </OMA> </OMOBJ>',
+         '<OMOBJ> <OMA> <OMS cd="integer1" name="remainder"/> <OMI>5</OMI> </OMA> </OMOBJ>',
+         '<OMOBJ> <OMA> <OMS cd="integer1" name="factorof"/> <OMI>25.6</OMI> <OMI>2</OMI> </OMA> </OMOBJ>',
+         '<OMOBJ> <OMA> <OMS cd="integer1" name="factorof"/> <OMI>2</OMI> </OMA> </OMOBJ>',
+         '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5.5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>',
+         '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> </OMA> </OMOBJ>']
 tests.reverse()
 while len(tests):
     print ">>", ParseOMstring(tests.pop())

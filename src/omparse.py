@@ -315,7 +315,7 @@ def oms_integer1_quotient(obj):
         if not type(obj[1]) is int:
             print"Can't compute quotient with a non-integer."
             return
-        return obj[0] / obj[1]
+        return obj[0] // obj[1]
     except IndexError:
         print "Quotient must have two elements"
     except TypeError:
