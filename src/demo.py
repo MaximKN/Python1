@@ -113,16 +113,13 @@ s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMI>10</OMI> </OMA> </
 print ">>", ParseOMstring(s)
 
 s = '<OMOBJ> <OMA> <OMS cd="integer1" name="remainder"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
-print ">>REMAINDER", ParseOMstring(s)
+print ">>", ParseOMstring(s)
 
 s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorof"/> <OMI>25</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
-print ">>FACTOROF", ParseOMstring(s)
+print ">>", ParseOMstring(s)
 
 s = '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
-print ">>QUOTIENT", ParseOMstring(s)
-
-s = '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
-print ">>QUOTIENT", ParseOMstring(s)
+print ">>", ParseOMstring(s)
 
 s = '<OMOBJ> <OMV name="x"/> </OMOBJ>'
 print ">>", ParseOMstring(s)
