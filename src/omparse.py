@@ -5,9 +5,10 @@
 from __future__ import division
 from fractions  import Fraction, gcd
 from math       import factorial
-from numpy      import matrix
 from operator   import add, mul, sub, truediv, pow
-import sys, operator
+
+from numpy import matrix
+
 
 ################################################################
 #
@@ -212,8 +213,11 @@ omdicts['linalg2']['matrixrow'] = oms_linalg2_matrixrow
 # linalg2.matrix
 def oms_linalg2_matrix(obj):
     try:
-        for row in obj:
-            assert len(row) == length, "Rows in matrix need to equal size"
+        length = len(obj[0])
+        for row in obj[1:]:
+            if len(row) != length:
+                print "Rows in matrix need to equal size"
+                return
         return matrix(obj)
     except IndexError:
         print "Need to have at least one row in matrix"
@@ -229,10 +233,21 @@ omdicts['linalg2']['matrix'] = oms_linalg2_matrix
 # integer1  http://www.openmath.org/cd/integer2.xhtml
 # integer1.factorial
 def oms_integer1_factorial(obj):
-    assert len(obj) == 1, "Factorial only supports one element."
-    assert type(obj[0]) is int, "Can't compute factorial of a non-integer."
-    assert obj[0] >= 0, "Can't compute factorial of negative integer."
-    return factorial(obj[0])
+    try:
+        if len(obj) != 1:
+            print "Factorial only supports one element."
+            return
+        if not type(obj[0]) is int:
+            print"Can't compute factorial of a non-integer."
+            return
+        if obj[0] < 0:
+            print "Can't compute factorial of negative integer."
+            return
+        return factorial(obj[0])
+    except IndexError:
+        print "Factorial must have only one element"
+    except TypeError:
+        print "Factorial must to be an integer"
 
 
 omdicts['integer1']['factorial'] = oms_integer1_factorial
@@ -284,10 +299,7 @@ ParseOMelementHandler = {'OMI': ParseOMI, 'OMSTR': ParseOMSTR, 'OMV': ParseOMV,
                          'OME': ParseOME}
 
 def ParseOMelement(obj):
-    try:
-        return ParseOMelementHandler[obj.tag](obj)
-    except:
-        print "Unexpected error:", sys.exc_info()[0]
+    return ParseOMelementHandler[obj.tag](obj)
         
 def ParseOMroot(root):
     return ParseOMelement(root[0])
