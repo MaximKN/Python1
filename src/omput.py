@@ -78,7 +78,7 @@ def OMRational(x):
     omelt.insert(1, oms)
     omelt.insert(2, OMelement(x.numerator))
     omelt.insert(3, OMelement(x.denominator))
-    
+    return omelt
 
 ################################################################
 #
