@@ -8,6 +8,7 @@ from math       import factorial
 from operator   import add, mul, sub, truediv, pow
 from numpy      import matrix
 
+
 ################################################################
 #
 # Basic OpenMath elements
@@ -42,7 +43,7 @@ def ParseOMV(node):
     try:
         name = node.attrib['name']
         # make sure variable name contains at least one character
-        if (len(name) == 0):
+        if len(name) == 0:
             print "Variable's name needs to have at least one character."
         else:
             return node.attrib['name']

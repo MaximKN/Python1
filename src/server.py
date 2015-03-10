@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
 # Echo server program
-from openmath import *
 import socket
-import sys, getopt
+import sys
+import getopt
+
+from openmath import *
 
 
 '''
