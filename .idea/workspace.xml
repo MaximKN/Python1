@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74550448-6a39-455f-bf50-d10db7fbd689" name="Default" comment="Matrix output">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tst/factorof.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tst/quotient.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tst/remainder.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Python1.iml" afterPath="$PROJECT_DIR$/.idea/Python1.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo.py" afterPath="$PROJECT_DIR$/demo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/omparse.py" afterPath="$PROJECT_DIR$/omparse.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unittests.py" afterPath="$PROJECT_DIR$/unittests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="74550448-6a39-455f-bf50-d10db7fbd689" name="Default" comment="Matrix output" />
     <ignored path="Python1.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unittests.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="unittests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/unittests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570">
+            <state vertical-scroll-proportion="4.775596" vertical-offset="0" max-vertical-offset="3570">
               <caret line="227" column="9" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -95,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="openmath.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="openmath.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openmath.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63113606" vertical-offset="0" max-vertical-offset="713">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -669,7 +660,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27708334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.28958052" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" x="90" y="23" width="1259" height="815" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.28958052" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" x="259" y="23" width="1259" height="813" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882273" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882273" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1113,16 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/unittests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570">
-          <caret line="227" column="9" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/omparse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="46.814816" vertical-offset="3694" max-vertical-offset="4380">
@@ -1141,9 +1122,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/openmath.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63113606" vertical-offset="0" max-vertical-offset="713">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unittests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.775596" vertical-offset="0" max-vertical-offset="3570">
+          <caret line="227" column="9" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
