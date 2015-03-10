@@ -5,7 +5,12 @@ from openmath import *
 
 class TestIntegers(unittest.TestCase):
     def test_int(self):
-        a = -50
+        a = 50
+        b = ParseOMstring(OMstring(a))
+        self.assertEqual(a, b)
+
+    def test_neg_int(self):
+        a = -30
         b = ParseOMstring(OMstring(a))
         self.assertEqual(a, b)
 
@@ -118,7 +123,7 @@ suite4 = unittest.TestLoader().loadTestsFromTestCase(TestLists)
 unittest.TextTestRunner(verbosity=2).run(suite4)
 
 
-class TestSequenceFunctions(unittest.TestCase):
+class ComplexNumbers(unittest.TestCase):
 
     def test_fraction(self):
         a = [1, Fraction(1, 2)]
@@ -144,12 +149,6 @@ class TestSequenceFunctions(unittest.TestCase):
         a = '<OMOBJ><OMA><OMS cd="complex1" name="complex_cartesian"/><OMA><OMS cd="nums1" name="rational"/><OMI>2</OMI><OMI>3</OMI></OMA><OMA><OMS cd="nums1" name="rational"/><OMI>5</OMI><OMI>4</OMI></OMA></OMA></OMOBJ>'
         self.assertEquals(type(ParseOMstring(a)), complex)
 
-
-suite5 = unittest.TestLoader().loadTestsFromTestCase(TestSequenceFunctions)
-unittest.TextTestRunner(verbosity=2).run(suite5)
-
-
-class TestInteger1(unittest.TestCase):
     def test_interval_file(self):
         self.assertEquals(ParseOMfile('../tst/interval.xml'), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
@@ -157,6 +156,12 @@ class TestInteger1(unittest.TestCase):
         a = '<OMOBJ> <OMA> <OMS cd="interval1" name="integer_interval"/> <OMI>1</OMI> <OMI>10</OMI> </OMA> </OMOBJ>'
         self.assertEquals(type(ParseOMstring(a)), list)
 
+
+suite5 = unittest.TestLoader().loadTestsFromTestCase(ComplexNumbers)
+unittest.TextTestRunner(verbosity=2).run(suite5)
+
+
+class TestInteger1(unittest.TestCase):
     def test_factorial_file(self):
         self.assertEquals(ParseOMfile('../tst/factorial.xml'), 3628800)
 
@@ -184,6 +189,7 @@ class TestInteger1(unittest.TestCase):
     def test_quotient_type(self):
         a = '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
         self.assertEquals(type(ParseOMstring(a)), int)
+
 
 suite6 = unittest.TestLoader().loadTestsFromTestCase(TestInteger1)
 unittest.TextTestRunner(verbosity=2).run(suite6)
@@ -225,8 +231,75 @@ class TestDictionary(unittest.TestCase):
         b = ParseOMstring(OMstring(a))
         self.assertEquals(a, b)
 
+    def test_dict_with_dict(self):
+        a = {'hello': {'a': False, True: 'b'}, 3: {'a': 0.5, -1.: 'b'}}
+        b = ParseOMstring(OMstring(a))
+        self.assertEquals(a, b)
+
+
     def test_dict_file(self):
         self.assertEquals(ParseOMfile('../tst/dict.xml'), {'a': 10, 2: 'blue', 'b': 20})
 
 suite7 = unittest.TestLoader().loadTestsFromTestCase(TestDictionary)
 unittest.TextTestRunner(verbosity=2).run(suite7)
+
+class TestArithmetic(unittest.TestCase):
+    def test_plus_file(self):
+        self.assertAlmostEquals(ParseOMfile('../tst/plus.xml'), -51.4)
+
+    def test_plus_int(self):
+        a = '<OMOBJ><OMA><OMS cd="arith1" name="plus"/><OMI>42</OMI><OMI>42</OMI></OMA></OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), int)
+
+    def test_plus_float(self):
+        a = '<OMOBJ><OMA><OMS cd="arith1" name="plus"/><OMI>42</OMI><OMF dec="46.7"/></OMA></OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), float)
+
+    def test_minus_file(self):
+        self.assertAlmostEquals(ParseOMfile('../tst/minus.xml'), -1.7)
+
+    def test_minus_type_int(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="minus"/> <OMI>56</OMI><OMI>10</OMI> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), int)
+
+    def test_minus_type_float(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="minus"/> <OMI>10</OMI> <OMF dec="5.6"/> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), float)
+
+    def test_times_file(self):
+        self.assertAlmostEquals(ParseOMfile('../tst/times.xml'), -1271.268)
+
+    def test_times_type_int(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="times"/> <OMI>45</OMI><OMI>6</OMI> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), int)
+
+    def test_times_type_float(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="times"/> <OMI>16</OMI> <OMF dec="4.3"/> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), float)
+
+    def test_div_file(self):
+        self.assertAlmostEquals(ParseOMfile('../tst/divide.xml'), -1525.8)
+
+    def test_div_type_int(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="divide"/> <OMI>16</OMI><OMI>6</OMI> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), float)
+
+    def test_div_type_float(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="divide"/> <OMI>732</OMI> <OMF dec="7.8"/> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), float)
+
+    def test_pow_file(self):
+        self.assertAlmostEquals(ParseOMfile('../tst/pow.xml'), 0.09984834568)
+
+    def test_pow_type_int(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="pow"/> <OMI>2</OMI><OMI>3</OMI> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), int)
+
+    def test_pow_type_float(self):
+        a = '<OMOBJ> <OMA> <OMS cd="arith1" name="pow"/> <OMI>5</OMI> <OMF dec="6.7"/> </OMA> </OMOBJ>'
+        self.assertEquals(type(ParseOMstring(a)), float)
+
+
+
+suite8 = unittest.TestLoader().loadTestsFromTestCase(TestArithmetic)
+unittest.TextTestRunner(verbosity=2).run(suite8)
