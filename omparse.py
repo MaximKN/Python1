@@ -121,6 +121,7 @@ omdicts['arith1']['abs']     = oms_arith1_abs
 omdicts['arith1']['gcd']     = oms_arith1_gcd
 omdicts['arith1']['lcm']     = oms_arith1_lcm
 
+
 ################################
 # OpenMath all basic data types
 ################################
@@ -195,7 +196,7 @@ def oms_linalg2_matrix_dict(obj):
 omdicts['linalg2']['matrix'] = oms_linalg2_matrix
 
 
-# integer1  http://www.openmath.org/cd/integer2.xhtml
+# integer1  http://www.openmath.org/cd/integer1.xhtml
 # integer1.factorial
 def oms_integer1_factorial(obj):
     assert len(obj) == 1, "Factorial only supports one element."
@@ -205,6 +206,34 @@ def oms_integer1_factorial(obj):
 
 
 omdicts['integer1']['factorial'] = oms_integer1_factorial
+
+# integer1.remainder
+def oms_integer1_remainder(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    assert obj[0] > 0
+    return obj[0] % obj[1]
+
+omdicts['integer1']['remainder'] = oms_integer1_remainder
+
+# integer1.factorof
+def oms_integer1_factorof(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    return obj[0] % obj[1] == 0
+
+omdicts['integer1']['factorof'] = oms_integer1_factorof
+
+# integer1.quotient
+def oms_integer1_quotient(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    return obj[0] / obj[1]
+
+omdicts['integer1']['quotient'] = oms_integer1_quotient
 
 
 def oms_dictionary_keyval(obj):

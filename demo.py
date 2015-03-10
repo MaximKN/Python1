@@ -112,6 +112,15 @@ print ">>", ParseOMstring(s)
 s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMI>10</OMI> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+s = '<OMOBJ> <OMA> <OMS cd="integer1" name="remainder"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
+print ">>REMAINDER", ParseOMstring(s)
+
+s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorof"/> <OMI>25</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
+print ">>FACTOROF", ParseOMstring(s)
+
+s = '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
+print ">>QUOTIENT", ParseOMstring(s)
+
 s = '<OMOBJ> <OMV name="x"/> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
@@ -130,6 +139,9 @@ print ParseOMfile('tst/complex.xml')
 print ParseOMfile('tst/interval.xml')
 print ParseOMfile('tst/matrix.xml')
 print ParseOMfile('tst/factorial.xml')
+print ParseOMfile('tst/remainder.xml')
+print ParseOMfile('tst/factorof.xml')
+print ParseOMfile('tst/quotient.xml')
 print ParseOMfile('tst/dict.xml')
 print ParseOMfile('tst/omattr.xml')
 
