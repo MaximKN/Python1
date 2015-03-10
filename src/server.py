@@ -5,16 +5,14 @@ from openmath import *
 import socket
 import sys, getopt
 
+# Reference:https://docs.python.org/2/library/socket.html
 def start(host, port):
-    HOST = host        # Symbolic name meaning all available interfaces
-    PORT = port        # Arbitrary non-privileged port
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind((HOST, PORT))
+    s.bind((host, host))
 
     while(True):
         s.listen(1)
-        conn, addr = s.accept()
-        print 'Connected by', addr
+        s.accept()
         while 1:
             data = conn.recv(1024)
             if not data: break

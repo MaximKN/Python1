@@ -10,6 +10,7 @@ from operator   import add, mul, sub, truediv, pow
 from numpy import matrix
 
 
+
 ################################################################
 #
 # Basic OpenMath elements
@@ -107,7 +108,7 @@ def oms_arith1_root(obj):
         
 def oms_arith1_product(obj):
     try:
-        return map(mul, obj[0])
+        return reduce(mul, obj[0])
     except IndexError:
         print "PRODUCT requires at least one element"
         
@@ -121,13 +122,13 @@ def oms_arith1_gcd(obj):
     try:
         return gcd(obj[0], obj[1])
     except IndexError:
-        print "GCD requires at least one element"
+        print "GCD requires two elements"
         
 def oms_arith1_lcm(obj):
     try:
         return (obj[0] * obj[1]) / gcd(obj[0], obj[1])
     except IndexError:
-        print "LCM requires at least one element"
+        print "LCM requires two elements"
         
         
 # arith1 http://www.openmath.org/cd/arith1.xhtml
@@ -184,7 +185,11 @@ omdicts['complex1']['complex_cartesian'] = oms_complex1_cartesian
 # interval1.integer_interval
 def oms_interval1_interval(obj):
     try:
-        return range(obj[0], obj[1] + 1)
+        t = range(obj[0], obj[1] + 1)
+        
+        # support for python definition of range returning range type
+        if type(t) == list: return t
+        else: return list(t)
     except IndexError:
         print "Interval requires two elements for range"
     except TypeError:
@@ -255,6 +260,7 @@ omdicts['integer1']['factorial'] = oms_integer1_factorial
 
 # integer1.remainder
 def oms_integer1_remainder(obj):
+<<<<<<< HEAD
     try:
         if len(obj) != 2:
             print "Remainder requires two elements."
@@ -318,6 +324,36 @@ def oms_integer1_quotient(obj):
 
 omdicts['integer1']['quotient'] = oms_integer1_quotient
 
+=======
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    assert obj[0] > 0
+    return obj[0] % obj[1]
+
+
+omdicts['integer1']['remainder'] = oms_integer1_remainder
+
+# integer1.factorof
+def oms_integer1_factorof(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    return obj[0] % obj[1] == 0
+
+
+omdicts['integer1']['factorof'] = oms_integer1_factorof
+
+# integer1.quotient
+def oms_integer1_quotient(obj):
+    assert len(obj) == 2
+    assert type(obj[0]) is int
+    assert type(obj[1]) is int
+    return obj[0] / obj[1]
+
+
+omdicts['integer1']['quotient'] = oms_integer1_quotient
+>>>>>>> 02b04f7c9acbe7c49512435dd516e6caa737671d
 
 def oms_dictionary_keyval(obj):
     return obj

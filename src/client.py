@@ -5,7 +5,6 @@ import socket
 import sys
 import getopt
 
-
 def main(argv):
     inputfile  = ''
     outputfile = ''
@@ -34,6 +33,7 @@ def main(argv):
 """
 Send OpenMath doc to server and
 get response
+Reference: https://docs.python.org/2/library/socket.html
 """
 def send(inputfile, outputfile):
     # get contents of file
