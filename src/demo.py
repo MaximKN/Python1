@@ -112,6 +112,15 @@ print ">>", ParseOMstring(s)
 s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorial"/> <OMI>10</OMI> </OMA> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
+s = '<OMOBJ> <OMA> <OMS cd="integer1" name="remainder"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
+print ">>REMAINDER", ParseOMstring(s)
+
+s = '<OMOBJ> <OMA> <OMS cd="integer1" name="factorof"/> <OMI>25</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
+print ">>FACTOROF", ParseOMstring(s)
+
+s = '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
+print ">>QUOTIENT", ParseOMstring(s)
+
 s = '<OMOBJ> <OMV name="x"/> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
@@ -122,19 +131,22 @@ s = '<OMOBJ><OMF/></OMOBJ>'
 print ">>", ParseOMstring(s)
 
 print "\n\tReading from the file:\n"
-print ParseOMfile('tst/integer.xml')
-print ParseOMfile('tst/list.xml')
-print ParseOMfile('tst/listnested.xml')
-print ParseOMfile('tst/string.xml')
-print ParseOMfile('tst/float.xml')
-print ParseOMfile('tst/bool.xml')
-print ParseOMfile('tst/rational.xml')
-print ParseOMfile('tst/complex.xml')
-print ParseOMfile('tst/interval.xml')
-print ParseOMfile('tst/matrix.xml')
-print ParseOMfile('tst/factorial.xml')
-print ParseOMfile('tst/dict.xml')
-print ParseOMfile('tst/omattr.xml')
+print ParseOMfile('../tst/integer.xml')
+print ParseOMfile('../tst/list.xml')
+print ParseOMfile('../tst/listnested.xml')
+print ParseOMfile('../tst/string.xml')
+print ParseOMfile('../tst/float.xml')
+print ParseOMfile('../tst/bool.xml')
+print ParseOMfile('../tst/rational.xml')
+print ParseOMfile('../tst/complex.xml')
+print ParseOMfile('../tst/interval.xml')
+print ParseOMfile('../tst/matrix.xml')
+print ParseOMfile('../tst/factorial.xml')
+print ParseOMfile('../tst/dict.xml')
+print ParseOMfile('../tst/factorof.xml')
+print ParseOMfile('../tst/remainder.xml')
+print ParseOMfile('../tst/quotient.xml')
+print ParseOMfile('../tst/omattr.xml')
 
 print "\n\tOutput to OpenMath file:\n"
 
