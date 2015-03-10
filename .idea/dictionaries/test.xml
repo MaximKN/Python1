@@ -2,6 +2,7 @@
   <dictionary name="test">
     <words>
       <w>omobj</w>
+      <w>omstr</w>
     </words>
   </dictionary>
 </component>
