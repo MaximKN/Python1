@@ -260,6 +260,71 @@ omdicts['integer1']['factorial'] = oms_integer1_factorial
 
 # integer1.remainder
 def oms_integer1_remainder(obj):
+<<<<<<< HEAD
+    try:
+        if len(obj) != 2:
+            print "Remainder requires two elements."
+            return
+        if not type(obj[0]) is int:
+            print"Can't compute remainder of a non-integer."
+            return
+        if not type(obj[1]) is int:
+            print"Can't compute remainder of a non-integer."
+            return
+        if obj[0] <= 0:
+            print "Can't divide 0."
+            return
+        return obj[0] % obj[1]
+    except IndexError:
+        print "Remainder must have two elements"
+    except TypeError:
+        print "Remainder must to be an integer"
+
+omdicts['integer1']['remainder'] = oms_integer1_remainder
+
+
+# integer1.factorof
+def oms_integer1_factorof(obj):
+    try:
+        if len(obj) != 2:
+            print "Factor of requires two elements."
+            return
+        if not type(obj[0]) is int:
+            print"Can't compute factor of of a non-integer."
+            return
+        if not type(obj[1]) is int:
+            print"Can't compute factor of of a non-integer."
+            return
+        return obj[0] % obj[1] == 0
+    except IndexError:
+        print "Factor of must have two elements"
+    except TypeError:
+        print "Factor of must to be an integer"
+
+omdicts['integer1']['factorof'] = oms_integer1_factorof
+
+
+# integer1.quotient
+def oms_integer1_quotient(obj):
+    try:
+        if len(obj) != 2:
+            print "Quotient requires two elements."
+            return
+        if not type(obj[0]) is int:
+            print"Can't compute quotient with a non-integer."
+            return
+        if not type(obj[1]) is int:
+            print"Can't compute quotient with a non-integer."
+            return
+        return obj[0] / obj[1]
+    except IndexError:
+        print "Quotient must have two elements"
+    except TypeError:
+        print "Quotient must to be an integer"
+
+omdicts['integer1']['quotient'] = oms_integer1_quotient
+
+=======
     assert len(obj) == 2
     assert type(obj[0]) is int
     assert type(obj[1]) is int
@@ -288,6 +353,7 @@ def oms_integer1_quotient(obj):
 
 
 omdicts['integer1']['quotient'] = oms_integer1_quotient
+>>>>>>> 02b04f7c9acbe7c49512435dd516e6caa737671d
 
 def oms_dictionary_keyval(obj):
     return obj
