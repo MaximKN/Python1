@@ -8,7 +8,6 @@ import getopt
 from openmath import *
 
 
-
 # Reference:https://docs.python.org/2/library/socket.html
 def start(host, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
