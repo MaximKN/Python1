@@ -3,11 +3,11 @@ import sys, getopt, os.path
 from openmath import *
 
 def simplify(inputfile, outputfile):
-    if (os.path.isfile(inputfile)):
+    if os.path.isfile(inputfile):
         with open(inputfile, "r") as f:
-            data = f.read();
+            data = f.read()
         with open(outputfile, "w") as f:
-            f.write(OMstring(ParseOMfile(inputfile)));
+            f.write(OMstring(ParseOMfile(inputfile)))
     else:
         print "%s could not be opened because it doesn't exist" % inputfile
 
@@ -28,9 +28,9 @@ def main(argv):
             inputfile = arg
         elif opt in ("-o", "--ofile"):
             outputfile = arg
-    if ((inputfile == '') or (outputfile == '')):
+    if (inputfile == '') or (outputfile == ''):
         print usage
-        sys.exit();
+        sys.exit()
     simplify(inputfile, outputfile)
 
 if __name__ == "__main__":

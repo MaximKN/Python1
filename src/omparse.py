@@ -153,6 +153,7 @@ omdicts['arith1']['lcm']     = oms_arith1_lcm
 omdicts['logic1']['true']  = True
 omdicts['logic1']['false'] = False
 
+
 # nums1     http://www.openmath.org/cd/nums1.xhtml
 # nums1.rational
 def oms_nums1_rational(obj):
