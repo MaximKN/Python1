@@ -121,6 +121,9 @@ print ">>FACTOROF", ParseOMstring(s)
 s = '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
 print ">>QUOTIENT", ParseOMstring(s)
 
+s = '<OMOBJ> <OMA> <OMS cd="integer1" name="quotient"/> <OMI>5</OMI> <OMI>2</OMI> </OMA> </OMOBJ>'
+print ">>QUOTIENT", ParseOMstring(s)
+
 s = '<OMOBJ> <OMV name="x"/> </OMOBJ>'
 print ">>", ParseOMstring(s)
 
