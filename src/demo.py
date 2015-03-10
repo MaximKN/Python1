@@ -102,5 +102,5 @@ print "\nOutput to OpenMath file:"
 tests.reverse()
 while len(tests):
     print "================================"
-    print ">>", OMstring(tests.pop())
+    OMprint(tests.pop())
     
