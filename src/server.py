@@ -5,25 +5,28 @@ from openmath import *
 import socket
 import sys, getopt
 
+
 # Reference:https://docs.python.org/2/library/socket.html
 def start(host, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind((host, host))
+    s.bind((host, port))
 
-    while(True):
+    while True:
         s.listen(1)
-        s.accept()
+        conn, addr = s.accept()
         while 1:
             data = conn.recv(1024)
-            if not data: break
+            if not data:
+                break
             conn.sendall(str(ParseOMstring(data)))
         conn.close()
+
 
 def main(argv):
     host = 'localhost'
     port = 50007
     try:
-        opts, args = getopt.getopt(argv,"h:a:p",["host=", "port="])
+        opts, args = getopt.getopt(argv[1:], "h:a:p", ["host=", "port="])
     except getopt.GetoptError:
         print 'server.py [-p <port>] [-h <host>]'
         sys.exit(2)
@@ -32,11 +35,11 @@ def main(argv):
             print 'server.py [-p <port>] [-h <host>]'
             sys.exit()
         elif opt in ("-p", "--port"):
-            if (arg != ''): 
+            if arg != '':
                 port = int(arg)
-       	elif opt in ("-a", "--host"):
-       		host = arg
+        elif opt in ("-a", "--host"):
+            host = arg
     start(host, port)
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main(sys.argv)
