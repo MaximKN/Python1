@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module omparse</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>omparse</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/cs/home/co33/Documents/2nd Year/CS2006/Projects/Python1/src/omparse.py">/cs/home/co33/Documents/2nd Year/CS2006/Projects/Python1/src/omparse.py</a></font></td></tr></table>
+    <p><tt>################################################################<br>
+#<br>
+#&nbsp;Parsing&nbsp;OpenMath&nbsp;objects<br>
+#</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-ParseOMA"><strong>ParseOMA</strong></a>(node)</dt></dl>
+ <dl><dt><a name="-ParseOMATP"><strong>ParseOMATP</strong></a>(node)</dt></dl>
+ <dl><dt><a name="-ParseOMATTR"><strong>ParseOMATTR</strong></a>(node)</dt></dl>
+ <dl><dt><a name="-ParseOME"><strong>ParseOME</strong></a>(node)</dt></dl>
+ <dl><dt><a name="-ParseOMF"><strong>ParseOMF</strong></a>(node)</dt><dd><tt>#&nbsp;OpenMath&nbsp;float</tt></dd></dl>
+ <dl><dt><a name="-ParseOMI"><strong>ParseOMI</strong></a>(node)</dt><dd><tt>#&nbsp;OpenMath&nbsp;integer</tt></dd></dl>
+ <dl><dt><a name="-ParseOMS"><strong>ParseOMS</strong></a>(node)</dt></dl>
+ <dl><dt><a name="-ParseOMSTR"><strong>ParseOMSTR</strong></a>(node)</dt><dd><tt>#&nbsp;OpenMath&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-ParseOMV"><strong>ParseOMV</strong></a>(node)</dt><dd><tt>#&nbsp;OpenMath&nbsp;variable</tt></dd></dl>
+ <dl><dt><a name="-ParseOMelement"><strong>ParseOMelement</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-ParseOMroot"><strong>ParseOMroot</strong></a>(root)</dt></dl>
+ <dl><dt><a name="-add"><strong>add</strong></a>(...)</dt><dd><tt><a href="#-add">add</a>(a,&nbsp;b)&nbsp;--&nbsp;Same&nbsp;as&nbsp;a&nbsp;+&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-factorial"><strong>factorial</strong></a>(...)</dt><dd><tt><a href="#-factorial">factorial</a>(x)&nbsp;-&gt;&nbsp;Integral<br>
+&nbsp;<br>
+Find&nbsp;x!.&nbsp;Raise&nbsp;a&nbsp;ValueError&nbsp;if&nbsp;x&nbsp;is&nbsp;negative&nbsp;or&nbsp;non-integral.</tt></dd></dl>
+ <dl><dt><a name="-mul"><strong>mul</strong></a>(...)</dt><dd><tt><a href="#-mul">mul</a>(a,&nbsp;b)&nbsp;--&nbsp;Same&nbsp;as&nbsp;a&nbsp;*&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_abs"><strong>oms_arith1_abs</strong></a>(obj)</dt><dd><tt>#&nbsp;Find&nbsp;absolute&nbsp;value</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_apply_op"><strong>oms_arith1_apply_op</strong></a>(obj, op)</dt><dd><tt>#&nbsp;Apply&nbsp;a&nbsp;passed&nbsp;operator&nbsp;to&nbsp;two&nbsp;elements<br>
+#&nbsp;Operator&nbsp;defined&nbsp;in&nbsp;"operator"&nbsp;module</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_divide"><strong>oms_arith1_divide</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_arith1_gcd"><strong>oms_arith1_gcd</strong></a>(obj)</dt><dd><tt>#&nbsp;Find&nbsp;greatest&nbsp;common&nbsp;denominator</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_lcm"><strong>oms_arith1_lcm</strong></a>(obj)</dt><dd><tt>#&nbsp;Find&nbsp;least&nbsp;common&nbsp;multiple</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_minus"><strong>oms_arith1_minus</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_arith1_plus"><strong>oms_arith1_plus</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_arith1_pow"><strong>oms_arith1_pow</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_arith1_product"><strong>oms_arith1_product</strong></a>(obj)</dt><dd><tt>#&nbsp;Multiplies&nbsp;a&nbsp;list&nbsp;of&nbsp;elements&nbsp;together</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_root"><strong>oms_arith1_root</strong></a>(obj)</dt><dd><tt>#&nbsp;Finds&nbsp;nth&nbsp;root&nbsp;of&nbsp;obj</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_sum"><strong>oms_arith1_sum</strong></a>(obj)</dt><dd><tt>#&nbsp;Sums&nbsp;list&nbsp;of&nbsp;elements&nbsp;together</tt></dd></dl>
+ <dl><dt><a name="-oms_arith1_times"><strong>oms_arith1_times</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_complex1_cartesian"><strong>oms_complex1_cartesian</strong></a>(obj)</dt><dd><tt>#&nbsp;complex1&nbsp;&nbsp;<a href="http://www.openmath.org/cd/complex1.xhtml">http://www.openmath.org/cd/complex1.xhtml</a><br>
+#&nbsp;complex1.complex_cartesian</tt></dd></dl>
+ <dl><dt><a name="-oms_dictionary_dict"><strong>oms_dictionary_dict</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_dictionary_keyval"><strong>oms_dictionary_keyval</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_integer1_factorial"><strong>oms_integer1_factorial</strong></a>(obj)</dt><dd><tt>#&nbsp;integer1&nbsp;&nbsp;<a href="http://www.openmath.org/cd/integer1.xhtml">http://www.openmath.org/cd/integer1.xhtml</a><br>
+#&nbsp;integer1.factorial</tt></dd></dl>
+ <dl><dt><a name="-oms_integer1_factorof"><strong>oms_integer1_factorof</strong></a>(obj)</dt><dd><tt>#&nbsp;integer1.factorof</tt></dd></dl>
+ <dl><dt><a name="-oms_integer1_quotient"><strong>oms_integer1_quotient</strong></a>(obj)</dt><dd><tt>#&nbsp;integer1.quotient</tt></dd></dl>
+ <dl><dt><a name="-oms_integer1_remainder"><strong>oms_integer1_remainder</strong></a>(obj)</dt><dd><tt>#&nbsp;integer1.remainder</tt></dd></dl>
+ <dl><dt><a name="-oms_interval1_interval"><strong>oms_interval1_interval</strong></a>(obj)</dt><dd><tt>#&nbsp;interval1&nbsp;<a href="http://www.openmath.org/cd/interval1.xhtml">http://www.openmath.org/cd/interval1.xhtml</a><br>
+#&nbsp;interval1.integer_interval</tt></dd></dl>
+ <dl><dt><a name="-oms_linalg2_matrix"><strong>oms_linalg2_matrix</strong></a>(obj)</dt><dd><tt>#&nbsp;linalg2.matrix</tt></dd></dl>
+ <dl><dt><a name="-oms_linalg2_matrix_dict"><strong>oms_linalg2_matrix_dict</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-oms_linalg2_matrixrow"><strong>oms_linalg2_matrixrow</strong></a>(obj)</dt><dd><tt>#&nbsp;linalg2&nbsp;&nbsp;&nbsp;<a href="http://www.openmath.org/cd/linalg2.xhtml">http://www.openmath.org/cd/linalg2.xhtml</a><br>
+#&nbsp;linalg2.matrixrow</tt></dd></dl>
+ <dl><dt><a name="-oms_list1_list"><strong>oms_list1_list</strong></a>(list)</dt><dd><tt>#&nbsp;list1&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.openmath.org/cd/list1.xhtml">http://www.openmath.org/cd/list1.xhtml</a><br>
+#&nbsp;list1.list</tt></dd></dl>
+ <dl><dt><a name="-oms_nums1_rational"><strong>oms_nums1_rational</strong></a>(obj)</dt><dd><tt>#&nbsp;nums1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.openmath.org/cd/nums1.xhtml">http://www.openmath.org/cd/nums1.xhtml</a><br>
+#&nbsp;nums1.rational</tt></dd></dl>
+ <dl><dt><a name="-pow"><strong>pow</strong></a>(...)</dt><dd><tt><a href="#-pow">pow</a>(a,&nbsp;b)&nbsp;--&nbsp;Same&nbsp;as&nbsp;a&nbsp;**&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-sub"><strong>sub</strong></a>(...)</dt><dd><tt><a href="#-sub">sub</a>(a,&nbsp;b)&nbsp;--&nbsp;Same&nbsp;as&nbsp;a&nbsp;-&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-truediv"><strong>truediv</strong></a>(...)</dt><dd><tt><a href="#-truediv">truediv</a>(a,&nbsp;b)&nbsp;--&nbsp;Same&nbsp;as&nbsp;a&nbsp;/&nbsp;b&nbsp;when&nbsp;__future__.division&nbsp;is&nbsp;in&nbsp;effect.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ParseOMelementHandler</strong> = {'OMA': &lt;function ParseOMA&gt;, 'OMATP': &lt;function ParseOMATP&gt;, 'OMATTR': &lt;function ParseOMATTR&gt;, 'OME': &lt;function ParseOME&gt;, 'OMF': &lt;function ParseOMF&gt;, 'OMI': &lt;function ParseOMI&gt;, 'OMS': &lt;function ParseOMS&gt;, 'OMSTR': &lt;function ParseOMSTR&gt;, 'OMV': &lt;function ParseOMV&gt;}<br>
+<strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
+<strong>omdicts</strong> = {'arith1': {'abs': &lt;function oms_arith1_abs&gt;, 'divide': &lt;function oms_arith1_divide&gt;, 'gcd': &lt;function oms_arith1_gcd&gt;, 'lcm': &lt;function oms_arith1_lcm&gt;, 'minus': &lt;function oms_arith1_minus&gt;, 'plus': &lt;function oms_arith1_plus&gt;, 'pow': &lt;function oms_arith1_pow&gt;, 'product': &lt;function oms_arith1_product&gt;, 'root': &lt;function oms_arith1_root&gt;, 'sum': &lt;function oms_arith1_sum&gt;, ...}, 'complex1': {'complex_cartesian': &lt;function oms_complex1_cartesian&gt;}, 'dictionary': {'dict': &lt;function oms_dictionary_dict&gt;, 'keyval': &lt;function oms_dictionary_keyval&gt;}, 'integer1': {'factorial': &lt;function oms_integer1_factorial&gt;, 'factorof': &lt;function oms_integer1_factorof&gt;, 'quotient': &lt;function oms_integer1_quotient&gt;, 'remainder': &lt;function oms_integer1_remainder&gt;}, 'interval1': {'integer_interval': &lt;function oms_interval1_interval&gt;}, 'linalg2': {'matrix': &lt;function oms_linalg2_matrix&gt;, 'matrixrow': &lt;function oms_linalg2_matrixrow&gt;}, 'list1': {'list': &lt;function oms_list1_list&gt;}, 'logic1': {'false': False, 'true': True}, 'nums1': {'rational': &lt;function oms_nums1_rational&gt;}}</td></tr></table>
+</body></html>
