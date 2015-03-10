@@ -1,6 +1,10 @@
 #!/usr/bin/python
-import sys, getopt, os.path
+import sys
+import getopt
+import os.path
+
 from openmath import *
+
 
 def simplify(inputfile, outputfile):
     if os.path.isfile(inputfile):
