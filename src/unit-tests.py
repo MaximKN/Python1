@@ -2,7 +2,6 @@ import unittest
 
 from openmath import *
 
-
 class TestIntegers(unittest.TestCase):
     def test_int(self):
         a = 50
