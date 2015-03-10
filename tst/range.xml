@@ -1,7 +1,0 @@
-<OMOBJ>
-    <OMA>
-        <OMS cd="interval1" name="integer_interval"/>
-        <OMI>-10</OMI>
-        <OMI>10</OMI>
-    </OMA>
-</OMOBJ>
